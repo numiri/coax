@@ -1,15 +1,12 @@
 # coax
 Coax is a math-aware pencil & paper replacement for doing algebra exercises.  To coax an equation is to "massage" it into form.
- 
-Here's a video demo of the web app in action.  <a href="http://tessm.modstein.com:9089/snguyen/web/ours/html/demo.mp4><img src="play-coax.png" /></a>
 
-Until I figure out how to use github properly, you can get the code here http://tessm.modstein.com:9089/snguyen/web/ours/html/coax-0.8.tar
+Here's a video demo of the web app in action.  
+<a href="http://tessm.modstein.com:9089/snguyen/web/ours/html/demo.mp4"><img src="play-coax.png"></a>
 
-Handwriting recognizer:  We use a 3rd party handwriting engine from Mathpix and you will need a key.  You can use mine for free on a trial basis, or get one from Mathpix (they charge about .005usd per web call).
+Until I figure out how to use github properly, you can get the code here https://tessm.modstein.com:9089/snguyen/web/ours/html/coax-0.8.tar (92MB)
 
-Licensing addendum:
-You may use this software in accordance of the GPL license.  In addition, you must reserve a square area on the screen  the size of max( 1 cm^2, 2% of screen size ) for a link devoted to math education
-<a href=[to-be-determined.html]><img src=[to-be-determined.png]></a>
+Contact:  address all questions to numiri@yahoo.com <br>
 
 # background
 Coax grew out of <a href="https://en.wikiversity.org/wiki/KinderCalculus">KinderCalculus</a>, which teaches Calculus to K-6 students.  Surprisingly, the first hurdle for 5-7 year olds learning algebra was not the math concepts, but the mental load used to re-copy equations at every algebraic step.  A 1st-grader can understand the idea of "solve for x" as gathering all the x's together and isolating it.  Aside from proper algebraic massaging, the actual mechanics of going from one step to the next requires penmanship strategy, such as re-copying an equation while remembering to make room for the x terms to be near each other.  A mistake in executing this strategy causes a lot of re-write and frustration -- this penmanship strategy is an exercise in penmanship, NOT abstract ideas.
@@ -195,3 +192,13 @@ Seshat       - open source.  good accuracy for single characters & simple expres
 .              but slow for more complex expressions.
 </pre>
 As a compromise, we use a Seshat-Mathpix combination.  Mathpix is accurate, but since we try to recognise each stroke as it's written so it can be grouped into draggable units like "cos", Mathpix cost can quickly add up.  We use Seshat for single strokes & groupings.  The file Classifier.js and Rex.js implements these strategies.
+
+# The fine print
+Handwriting recognizer:  
+We use a 3rd party handwriting web service from Mathpix and you will need a key.  You can use my key for free on a trial basis, or get one from Mathpix (they charge about .005usd per web call).
+
+Licensing addendum:
+You may use this software in accordance of the GPL license.  In addition, you must reserve a square area on the screen  the size of max( 1 cm^2, 2% of screen size ) for a link devoted to math education
+<a href=[to-be-determined.html]><img src=[to-be-determined.png]></a>
+
+Status : The software is in an Alpha state so bugs .  Security was not a primary consideration at the time, eg. passwords are obscured, but not hashed.
