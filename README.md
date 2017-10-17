@@ -182,7 +182,6 @@ alias cdjasp='cd ~/big/app/tomcat6/work/Catalina/localhost/_/org/apache/jsp/jdoe
 alias cpdbjar='cp $trunk/server/dao/target/coax-db-0.0.1-SNAPSHOT.jar $cat/lib'
 alias cpccjar='cp $trunk/server/common/target/coax-common-0.0.1-SNAPSHOT.jar $cat/lib'
 </pre>
-app login:  admin/wyoming
 
 # recognizers
 <pre>
