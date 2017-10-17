@@ -1,7 +1,7 @@
 # coax
-Coax is a math-aware pencil & paper replacement for doing algebra exercises.
+Coax is a math-aware pencil & paper replacement for doing algebra exercises.  To coax an equation is to "massage" it into form.
  
-Here's a video demo of the app in action.  http://tessm.modstein.com:9089/snguyen/web/ours/html/demo.mp4
+Here's a video demo of the web app in action.  <a href="http://tessm.modstein.com:9089/snguyen/web/ours/html/demo.mp4><img src="play-coax.png" /></a>
 
 Until I figure out how to use github properly, you can get the code here http://tessm.modstein.com:9089/snguyen/web/ours/html/coax-0.8.tar
 
@@ -12,7 +12,7 @@ You may use this software in accordance of the GPL license.  In addition, you mu
 <a href=[to-be-determined.html]><img src=[to-be-determined.png]></a>
 
 # background
-Coax grew out of KinderCalculus https://en.wikiversity.org/wiki/KinderCalculus, which teaches Calculus to K-6 students.  Surprisingly, the first hurdle for 5-7 year olds learning algebra was not the math concepts, but the mental load used to re-copy equations at every algebraic step.  A 1st-grader can understand the idea of "solve for x" as gathering all the x's together and isolating it.  Aside from proper algebraic massaging, the actual mechanics of going from one step to the next requires penmanship strategy, such as re-copying an equation while remembering to make room for the x terms to be near each other.  A mistake in executing this strategy causes a lot of re-write and frustration -- this penmanship strategy is an exercise in penmanship, NOT abstract ideas.
+Coax grew out of <a href="https://en.wikiversity.org/wiki/KinderCalculus">KinderCalculus</a>, which teaches Calculus to K-6 students.  Surprisingly, the first hurdle for 5-7 year olds learning algebra was not the math concepts, but the mental load used to re-copy equations at every algebraic step.  A 1st-grader can understand the idea of "solve for x" as gathering all the x's together and isolating it.  Aside from proper algebraic massaging, the actual mechanics of going from one step to the next requires penmanship strategy, such as re-copying an equation while remembering to make room for the x terms to be near each other.  A mistake in executing this strategy causes a lot of re-write and frustration -- this penmanship strategy is an exercise in penmanship, NOT abstract ideas.
 <pre>
 For example, let's solve for x by first gathering x terms: 
 (1)      6 + 4x = -3 - 5x + 2y   (given)
