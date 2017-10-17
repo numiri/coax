@@ -12,7 +12,7 @@ You may use this software in accordance of the GPL license.  In addition, you mu
 <a href=[to-be-determined.html]><img src=[to-be-determined.png]></a>
 
 # background
-Coax grew out of KinderCalculus, which teaches Calculus to K-6 students.  Surprisingly, the first hurdle for 5-7 year olds learning algebra was not the math concepts, but the mental load used to re-copy equations at every algebraic step.  A 1st-grader can understand the idea of "solve for x" as gathering all the x's together and isolating it.  Aside from proper algebraic massaging, the actual mechanics of going from one step to the next requires penmanship strategy, such as re-copying an equation while remembering to make room for the x terms to be near each other.  A mistake in executing this strategy causes a lot of re-write and frustration -- this penmanship strategy is an exercise in penmanship, NOT abstract ideas.
+Coax grew out of KinderCalculus https://en.wikiversity.org/wiki/KinderCalculus, which teaches Calculus to K-6 students.  Surprisingly, the first hurdle for 5-7 year olds learning algebra was not the math concepts, but the mental load used to re-copy equations at every algebraic step.  A 1st-grader can understand the idea of "solve for x" as gathering all the x's together and isolating it.  Aside from proper algebraic massaging, the actual mechanics of going from one step to the next requires penmanship strategy, such as re-copying an equation while remembering to make room for the x terms to be near each other.  A mistake in executing this strategy causes a lot of re-write and frustration -- this penmanship strategy is an exercise in penmanship, NOT abstract ideas.
 <pre>
 For example, let's solve for x by first gathering x terms: 
 (1)      6 + 4x = -3 - 5x + 2y   (given)
@@ -135,11 +135,11 @@ env variables -- create these variables:   $cat = tomcat home
 > mv   trunk ~/coax-src/coax                (now we have ~/coax-src/coax-XX/trunk)
 > ln -s ~/coax-src/coax-xx ~/coax-src/coax  (switch to other coax versions using soft link)
 </pre>
-Java code
----------
-Install tomcat & copy the xml files to your tomcat install (configCmd.xml, web.xml, conf/server.xml, conf/web.xml).  In my env, tomcat lives in the coder's home directory and listens on the port specifed in web.xml.
-> ln -s ~/coax-src/coax/trunk/gui $cat/webapps/ROOT/jdoe  (jdoe is coder's name)
 
+# Java code
+Install tomcat & copy the xml files to your tomcat install (configCmd.xml, web.xml, conf/server.xml, conf/web.xml).  In my env, tomcat lives in the coder's home directory and listens on the port specifed in web.xml.
+<pre>
+> ln -s ~/coax-src/coax/trunk/gui $cat/webapps/ROOT/jdoe  (jdoe is coder's name)
 to build the java code, 
 > cd to the 2 directories dao or common where pom.xml is.
 > apt-get install mvn ?
@@ -147,9 +147,10 @@ to build the java code,
 > cd target
 > cp coax-common-0.0.1-SNAPSHOT.jar $cat/lib
 > cp coax-db-0.0.1-SNAPSHOT.jar     $cat/lib
+</pre>
 
-database
---------
+# database
+<pre>
 if mysql is not installed
 > yum install mysql
 > yum install mysql-server
@@ -161,8 +162,7 @@ mysql> create database coax;
 > mysql --user=root --password=xxx coax < coax.sql  (coax.sql is in trunk/server/database)
 mysql> grant all on coax.* to 'root'@'localhost';
 mysql> grant all on coax.* to 'root'@'%';  (not sure if this is needed)
-
-CIT -- this is used for shapes
+</pre>
 
 # .bashrc
 some useful aliases and env's are
