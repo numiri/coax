@@ -69,24 +69,25 @@ catalina.out - logs   |-- ~/big/app/tomcat6 --|  config.xml    (db logins)      
                        ......... : ...........+- settings_tree.xml                            ---+
                        :         : soft
                        :         : link
-                       v         :                                                            ---+
-                    WEB-INF/     :   cross-files.txt                      main/java/com/coax     |
-                    settings     :        |              pom.xml  src --  /common/Cli/*java      |
-             soft   _tree.xml    :        |                    |   |                             |
+                       :         :                                                            ---+
+                       :         :   cross-files.txt                      main/java/com/coax     |
+                       V         :        |              pom.xml  src --  /common/Cli/*java      |
+             soft     (*)        :        |                    |   |                             |
              link   login.jsp    :       doc                   +---+                             |
          +--jsp <-- index.jsp--+ :        |                      |                               |
    html -|                     | :        |                      |                               |
          |-- ours --+          | :        |                +-- common                            |
  +====+  |          |          | V   +--------+            |-- database -- schema.sql            |
- | js | -+          |-- web -- gui --|  trunk |-- server --|-- theirs-+--lib -- activemath-*.jar |
- +====+    theirs --+           |    +--------+            +-- dao    |  CIT    thirdparty-*.jar |  coax
-             |                  |                                |    +--tomcat                  |  code
+ | js | -+          |-- web -- gui --|  trunk |-- server --|                                     |
+ +====+    theirs --+           |    +--------+            +-- dao                               |  coax
+             |                  |                                |                               |  code
              |                (limbo code)                       |                               |  base
              +- jquery        noid (native android)            +---+                             |
                 mathjax       napl (native ios)                |   |                             |
                 ...                                      pom.xml  src -- main/java/com/coax      |
                                                                          /db/dao/*java           |
                                                                                               ---+
+(*) sub-directory WEB-INF/settings_tree.xml
 </pre>
 # code files
 Since this is a rich GUI app, 80% of the code is in Javascript.  The remainder is 15% Java, and 5% SQL.  
