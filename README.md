@@ -50,4 +50,4 @@ Licensing addendum:
 You may use this software in accordance of the GPL license.  In addition, you must reserve a square area on the screen  the size of max( 1 cm^2, 2% of screen size ) for a link devoted to math education
 <a href=[to-be-determined.html]><img src=[to-be-determined.png]></a>
 
-Status : The software is in an Alpha state so bugs .  Security was not a primary consideration at the time, eg. passwords are obscured, but not hashed.
+Status : The software is in an Alpha state so ... bugs.  Getting the product built was our primary consideration and security was secondary, so passwords are obscured by encoding, but not hashed.  This should not be a hard fix.
