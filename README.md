@@ -44,7 +44,7 @@ The handwriting recognizer is the trickiest part, so we rely on commercial syste
 
 # The fine print
 Handwriting recognizer:  
-We use a 3rd party handwriting web service from Mathpix and you will need a key.  You can use my key for free on a trial basis, or get one from Mathpix (they charge about .005usd per web call).
+We use a 3rd party handwriting web service from Mathpix and you will need a key.  You can use my key for free on a trial basis, or get one from Mathpix (they charge about .005usd per web call).  Please email me or Mathpix for a key.
 
 Licensing addendum:
 You may use this software in accordance of the GPL license.  In addition, you must reserve a square area on the screen  the size of max( 1 cm^2, 2% of screen size ) for a link devoted to math education
