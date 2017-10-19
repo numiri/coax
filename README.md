@@ -6,7 +6,7 @@ Here's a video demo of the web app in action.
 
 Until I figure out how to use github properly, you can get the code here https://tessm.modstein.com:9089/snguyen/web/ours/html/coax-0.8.tar (92MB)
 
-Contact:  address all questions to numiri@yahoo.com <br>
+Contact:  Email to numiri@yahoo.com, w/ the Subject "coax on github" <br>
 
 # background
 Coax grew out of <a href="https://en.wikiversity.org/wiki/KinderCalculus">KinderCalculus</a>, which teaches Calculus to K-6 students.  Surprisingly, the first hurdle for 5-7 year olds learning algebra was not the math concepts, but the mental load used to re-copy equations at every algebraic step.  A 1st-grader can understand the idea of "solve for x" as gathering all the x's together and isolating it.  Aside from proper algebraic massaging, the actual mechanics of going from one step to the next requires penmanship strategy, such as re-copying an equation while remembering to make room for the x terms to be near each other.  A mistake in executing this strategy causes a lot of re-write and frustration -- this penmanship strategy is an exercise in penmanship, NOT abstract ideas.
