@@ -1,10 +1,11 @@
 # coax
 Coax is a math-aware pencil & paper replacement for doing algebra exercises.  To coax an equation is to "massage" it into form.
 
-Here's a video demo of the web app in action.  
+It's a touch screen web app.  Here's a video demo.  
 <a href="http://tessm.modstein.com:9089/snguyen/web/ours/html/demo.mp4"><img src="play-coax.png"></a>
 
-Until I figure out how to use github properly, you can get the code here https://tessm.modstein.com:9089/snguyen/web/ours/html/coax-0.8.tar (92MB)
+Until I figure out how to use github properly, you can get the code here https://tessm.modstein.com:9089/snguyen/web/ours/html/coax-0.8.tar 
+(92MB: 22MB for code & data.  the remainder is Apache Tomcat)
 
 Contact:  Email to numiri@yahoo.com, w/ the Subject "coax on github" <br>
 
