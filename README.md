@@ -1,11 +1,9 @@
 # coax
-Coax is a math-aware pencil & paper replacement for doing algebra exercises.  To coax an equation is to "massage" it into form.
-
-It's a touch screen web app.  Here's a video demo.  
+Coax is a math-aware pencil & paper replacement for doing algebra exercises.  The name Coax is another word for  "massaging" an equation into the desired form.  Here's a video demo of the web app in action.
 <a href="http://tessm.modstein.com:9089/snguyen/web/ours/html/demo.mp4"><img src="play-coax.png"></a>
 
 Until I figure out how to use github properly, you can get the code here https://tessm.modstein.com:9089/snguyen/web/ours/html/coax-0.8.tar 
-(92MB: 22MB for code & data.  the remainder is Apache Tomcat)
+(92MB: 22MB for code & data.  The remainder is Apache Tomcat)
 
 Contact:  Email to numiri@yahoo.com, w/ the Subject "coax on github" <br>
 
@@ -23,7 +21,7 @@ or (b) re-use the existing line by erasing 6 + 4x and shift it left to make room
        this requires memorizing "6 + 4x" because it has been erased.  again, interrupting the chain of thought.
 
 Coax allows the child to drag "6 + 4x" left to make room.  
-   (1)  <--( 6 + 4x ) = -3 - 5x + 2y                  (2) 6 + 4x  _   = -3 - 5x + 2y   
+   (1)  <--( 6 + 4x ) = -3 - 5x + 2y                  (2) 6 + 4x  ___ = -3 - 5x + 2y   
                                                                    ^         |
         drag 6 + 4x to the left to                                 |         | 
         make space next to "="                                     +---------+
@@ -34,20 +32,21 @@ No penmanship needed.  As it turns out, abstract ideas are not the first barrier
 # system layout
 <pre>
 The system layout is typical for a web app:         browser  <--> app server <--> database.
-               (lines show communications)             |             |
+(lines show communications)                            |             |
                                                        |        +----+-----+     
                                                        |        |          |
                        we add 2 extensions:            handwriting     computer algebra
-                                                       recognizer(s)   system (maxima)
+                                                       recognizer      system (maxima)
 </pre>
-The handwriting recognizer is the trickiest part, so we rely on commercial systems.  Depending on the recognizer, it could be part of the app server, or a commercial web service elsewhere.  See end of document for a comparison of existing recognizers.
+The handwriting recognizer is tricky, so we rely on commercial systems.  Depending on the recognizer, it could be part of the app server, or a commercial web service elsewhere.  See end of document for a comparison of recognizers we've tried.
 
 # The fine print
 Handwriting recognizer:  
-We use a 3rd party handwriting web service from Mathpix and you will need a key.  You can use my key for free on a trial basis, or get one from Mathpix (they charge about .005usd per web call).  Please email me or Mathpix for a key.
+Currently, we are using Mathpix and you will need a key.  You can use my key for free on a trial basis, or get one from Mathpix (as of 2017 they charge about .005usd per web call).  Please email me or Mathpix for a key.
 
 Licensing addendum:
-You may use this software in accordance of the GPL license.  In addition, you must reserve a square area on the screen  the size of max( 1 cm^2, 2% of screen size ) for a link devoted to math education
-<a href=[to-be-determined.html]><img src=[to-be-determined.png]></a>
+You may use this software in accordance of the GPL license.  In addition, you must reserve a square area on the screen for a link or iframe devoted to math education.  The link may change from time to time and its size should be the larger of 1 cm sq or 1% of screen size.
+<a href=[to-be-determined.html]>to be determined</a>
 
-Status : The software is in an Alpha state so ... bugs.  Getting the product built was our primary consideration and security was secondary, so passwords are obscured by encoding, but not hashed.  This should not be a hard fix.
+Status : 
+The software is in an Alpha state so ... bugs.  Getting the product built was our primary consideration and security was secondary, so passwords are obscured by encoding, but not hashed.  This should not be a hard fix.
