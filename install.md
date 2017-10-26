@@ -1,5 +1,10 @@
 # installation
-pre-requisite: mysql, tomcat 6 or 8, basic unix knowledge (env variables, soft links), root privileges (for mysql)
+
+pre-requisites
+--------------
+server:  you will need a Linux machine like Ubuntu-16 capable of mysql, tomcat 6 (and jdk 1.8).  You also need basic unix knowledge (env variables, soft links), and root privileges (for mysql).  install mysql with apt-get.  tomcat is included in our tar ball, but you will need to get jdk 1.8 from Oracle's website.  
+
+client:  this app runs on Chrome on Android, iOS, and Windows.  Firefox and Opera might work too.  We <b>strongly</b> recommend using a stylus on a tablet.  Fingers work ok on a Windows touch screen.
 
 tar ball
 --------
@@ -50,8 +55,7 @@ some useful aliases and env's are
 <pre>
 export cat=~/big/app/tomcat6
 export trunk=~/coax-src/coax/trunk
-export CLASSPATH=.:"$cat/lib/*":$cat/lib:$trunk/src/main/java/com/coax/db/dao:$trunk/src/main/java/com/coax/db/dto:$cat/lib/tomcat-juli.jar
-
+export CLASSPATH=.:"$cat/lib/*":$cat/lib:$cat/lib/tomcat-juli.jar
 alias cdtrunk='cd $trunk'
 alias cdjs='cd $trunk/gui/web/ours/js'
 alias cdjsp='cd $trunk/gui/web/ours/jsp'
@@ -61,5 +65,19 @@ alias cddao='cd $trunk/server/dao/src/main/java/com/coax/db/dao'
 alias cdjasp='cd ~/big/app/tomcat6/work/Catalina/localhost/_/org/apache/jsp/jdoe/web/ours/jsp' (for debugging jsp)
 alias cpdbjar='cp $trunk/server/dao/target/coax-db-0.0.1-SNAPSHOT.jar $cat/lib'
 alias cpccjar='cp $trunk/server/common/target/coax-common-0.0.1-SNAPSHOT.jar $cat/lib'
+alias t6start='$cat/bin/catalina.sh start'
+alias t6stop='$cat/bin/catalina.sh stop'
+alias t6restart='t6stop; t6start'
 </pre>
 
+coding
+------
+here are the steps if you need to change the java code:
+> cd $trunk/server/common  (or the dao directory, depending on which code you're changing)
+> mvn install
+> cpccjar (or cpdbjar, if you're changing dao code)
+> t6restart
+
+jsp's don't need explicit compilation.  Tomcat should automatically recompile for you, but try restarting tomcat if the new code doesn't take effect.
+
+javascript doesn't need any compilation, of course.
