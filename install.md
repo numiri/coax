@@ -73,11 +73,12 @@ alias t6restart='t6stop; t6start'
 coding
 ------
 here are the steps if you need to change the java code:
+<pre>
 > cd $trunk/server/common  (or the dao directory, depending on which code you're changing)
 > mvn install
 > cpccjar (or cpdbjar, if you're changing dao code)
 > t6restart
-
+</pre>
 jsp's don't need explicit compilation.  Tomcat should automatically recompile for you, but try restarting tomcat if the new code doesn't take effect.
 
 javascript doesn't need any compilation, of course.
