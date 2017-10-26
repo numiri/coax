@@ -1,5 +1,5 @@
 # coax
-Coax is a math-aware web app to  replace pencil & paper for doing algebra exercises.  The name Coax is another word for  "massaging" an equation into the desired form.  Here's a video demo (3 minutes)
+Coax is a math-aware web app to  replace pencil & paper for doing algebra exercises.  The name Coax reflects the act of "massaging" an equation into the desired form.  Here's a video demo (3 minutes)
 <a href="http://tessm.modstein.com:9089/snguyen/web/ours/html/demo.mp4"><img src="play-coax.png"></a>
 
 Until I figure out how to use github properly, you can get the code here https://tessm.modstein.com:9089/snguyen/web/ours/html/coax-0.8.tar 
@@ -45,8 +45,7 @@ Handwriting recognizer:
 Currently, we are using Mathpix and you will need a key.  You can use my key for free on a trial basis, or get one from Mathpix (as of 2017 they charge about .005usd per web call).  Please email me or Mathpix for a key.
 
 Licensing addendum:
-You may use this software in accordance of the GPL license.  In addition, you must reserve a square area on the screen for a link or iframe devoted to math education.  The link may change from time to time and its size should be the larger of 1 cm sq or 1% of screen size.
-<a href=[to-be-determined.html]>to be determined</a>
+You may use this software in accordance of the GPL license.  In addition, you must reserve a square area on the screen for a link or iframe devoted to math education.  The link may change from time to time and its size should be the larger of 1 cm sq or 1% of screen size.  The exact link destination is to be determined.
 
 Status : 
-The software is in an Alpha state so ... bugs.  Getting the product built was our primary consideration and security was secondary, so passwords are obscured by encoding, but not hashed.  This should not be a hard fix.
+The software is in an Alpha state so bugs can be expected.  Getting the product built was our primary consideration and security was secondary, so passwords are obscured by encoding, but not hashed.  This should not be a hard fix.
