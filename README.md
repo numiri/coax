@@ -3,9 +3,8 @@ Coax is a math-aware web app to  replace pencil & paper for doing algebra exerci
 
 <a href="http://tessm.modstein.com:9089/snguyen/web/ours/html/demo.mp4"><img src="play-coax.png"></a>
 
-Until I figure out how to use github properly, you can get the code <a src="http://tessm.modstein.com:9089/snguyen/coax-0.7.tar">here</a> (92MB: 22MB for code & data.  The remainder is Apache Tomcat) <br>
-You will also need JDK 1.8 from Oracle's <a src="http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html">website</a> or <a src="http://tessm.modstein.com:9089/snguyen/jdk-8u25-linux-x64.tar.gz">here.</a>
-
+Until I figure out how to use github properly, you can get the code here http://tessm.modstein.com:9089/snguyen/public/coax-0.7.tar (92MB: 22MB for code & data.  The remainder is Apache Tomcat) <br>
+You will also need JDK 1.8 from Oracle's website or here http://tessm.modstein.com:9089/snguyen/public/jdk-8u25-linux-x64.tar.gz (160MB).
 
 Contact:  Email to numiri@yahoo.com, w/ the Subject "coax on github" <br>
 
