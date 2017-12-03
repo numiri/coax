@@ -2,7 +2,7 @@
 
 pre-requisites
 --------------
-server:  you will need a Linux machine like Ubuntu-16 capable of mysql, tomcat 6 (and jdk 1.8).  You also need basic unix knowledge (env variables, soft links), and root privileges (for mysql).  install mysql with apt-get.  tomcat is included in our tar ball, but you will need to get jdk 1.8 from Oracle's website.  
+server:  you will need a Linux machine like Ubuntu-16 capable of mysql, tomcat 6 (and jdk 1.8).  You also need basic unix knowledge (env variables, soft links), and root privileges (for mysql).  install mysql with apt-get.  tomcat is included in our tar ball, but you will need to get jdk 1.8 from Oracle's website.  You will also need JDK 1.8 from Oracle's website or here http://tessm.modstein.com:9089/snguyen/public/jdk-8u25-linux-x64.tar.gz (160MB).
 
 client:  this app runs on Chrome on Android, iOS, and Windows.  Firefox and Opera might work too.  We <b>strongly</b> recommend using a stylus on a tablet.  Fingers work ok on a Windows touch screen.
 
