@@ -22,10 +22,10 @@ or (b) re-use the existing line by erasing 6 + 4x and shift it left to make room
 
 Coax allows the child to drag "6 + 4x" left to make room.  
    (1)  <--( 6 + 4x ) = -3 - 5x + 2y                  (2) 6 + 4x  ___ = -3 - 5x + 2y   
-                                                                   ^         |
-        drag 6 + 4x to the left to                                 |         | 
-        make space next to "="                                     +---------+
-                                                         drag 5x across the " = "
+                     ^                                             ^         |
+                     |                                             |         | 
+        need space here, so                                        +---------+
+        drag 6 + 4x to the left                          drag 5x across the " = "
 </pre>
 No penmanship needed.  As it turns out, abstract ideas are not the first barrier to algebra for young children -- it's penmanship!
 
