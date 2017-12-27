@@ -3,7 +3,7 @@ Coax is a math-aware web app to  replace pencil & paper for doing algebra exerci
 
 <a href="http://tessm.modstein.com:9089/snguyen/web/ours/html/demo.mp4"><img src="play-coax.png"></a>
 
-Until I figure out how to use github properly, you can get the code here http://tessm.modstein.com:9089/snguyen/public/coax-0.7.tar (92MB: 22MB for code & data.  The remainder is Apache Tomcat).  See install.md for further instructions. <br>
+Until I figure out how to use github properly, you can get the code here http://tessm.modstein.com:9089/snguyen/public/coax-0.7.tar (92MB: 22MB for code & data.  The remainder is Apache Tomcat).  See install.md for further instructions.  The project is  in Alpha stage, so some Algebra problems are appropriate for it and do expect bugs.  This work might be appropriate for organizations with programmer staff.<br>
 
 Contact:  Email to numiri@yahoo.com, w/ the Subject "coax on github" <br>
 
