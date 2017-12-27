@@ -1,5 +1,5 @@
 # coax
-Coax is a math-aware web app to  replace pencil & paper for doing algebra exercises.  The name Coax reflects the act of coaxing or "massaging" an equation into the desired form.  Here's a 3-minute video demo. <br>
+Coax is a math-aware web app to  replace pencil & paper for doing algebra exercises.  The name Coax reflects the act of "massaging" an equation into form.  Here's a 3-minute video demo. <br>
 
 <a href="http://tessm.modstein.com:9089/snguyen/web/ours/html/demo.mp4"><img src="play-coax.png"></a>
 
