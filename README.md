@@ -38,7 +38,7 @@ The system layout is typical for a web app:         browser  <--> app server <--
                        we add 2 extensions:            handwriting     computer algebra
                                                        recognizer      system (maxima)
 </pre>
-The handwriting recognizer is tricky, so we rely on commercial systems.  Depending on the recognizer, it could be part of the app server, or a commercial web service elsewhere.  See end of document for a comparison of recognizers we've tried.
+The handwriting recognizer is tricky, so we rely on commercial systems.  Depending on the recognizer, it could be part of the app server, or a commercial web service elsewhere.  See too-much-info.md for a comparison of recognizers we've tried.
 
 # The fine print
 Handwriting recognizer:  
