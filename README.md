@@ -1,12 +1,14 @@
+# alert
+Since the Microsoft acquisition of Github, I reconsidering placing the Coax project here.  
+Contact:  Email to numiri@yahoo.com, w/ the Subject "Coax math software" <br>
+
 # coax
 Coax is a math-aware web app to  replace pencil & paper for doing algebra exercises.  The name Coax reflects the act of "massaging" an equation into form.  Here's a 3-minute video demo. <br>
 
-<a href="https://github.com/numiri/coax/blob/master/demo.mp4"><img src="play-coax.png"></a>
+<a href="https://unhomeless.org/demo.mp4"><img src="play-coax.png"></a>
 (see video demo.mp4 file)
 
-Until I figure out how to use github properly, you can get the code here http://tessm.modstein.com:9089/snguyen/public/coax-0.7.tar (92MB: 22MB for code & data.  The remainder is Apache Tomcat).  See install.md for further instructions.  The project is  in Alpha stage, so some Algebra problems are not appropriate for it and do expect bugs.  This work might be appropriate for organizations with programming staff.<br>
-
-Contact:  Email to numiri@yahoo.com, w/ the Subject "coax on github" <br>
+The coax-0.7.tar ball is 92MB -- 22MB for code & data with the remainder being Apache Tomcat.  See install.md for further instructions.  The project is  in Alpha stage, so some Algebra problems are not appropriate for it and do expect bugs.  This work might be appropriate for organizations with programming staff.<br>
 
 # background
 Coax grew out of <a href="https://en.wikiversity.org/wiki/KinderCalculus">KinderCalculus</a>, which teaches Calculus to K-6 students.  Surprisingly, the first hurdle for 5-7 year olds learning algebra was not the math concepts, but the mental load used to re-copy equations at every algebraic step.  A 1st-grader can understand the idea of "solve for x" as gathering all the x's together and isolating it.  Aside from proper algebraic massaging, the actual mechanics of going from one step to the next requires penmanship strategy, such as re-copying an equation while remembering to make room for the x terms to be near each other.  A mistake in executing this strategy causes a lot of re-write and frustration -- this penmanship strategy is an exercise in penmanship, NOT abstract ideas.  Coax was designed to solve this problem, and is usable by any algebra student.
