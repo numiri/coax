@@ -1,6 +1,6 @@
 # alert
-Since the Microsoft acquisition of Github, I reconsidering placing the Coax project here.  
-Contact:  Email to numiri@yahoo.com, w/ the Subject "Coax math software" <br>
+Since the Microsoft acquisition of Github, I am reconsidering placing the Coax project here.  
+Please direct inquiries to numiri@yahoo.com, w/ the subject "Coax math software" <br>
 
 # coax
 Coax is a math-aware web app to  replace pencil & paper for doing algebra exercises.  The name Coax reflects the act of "massaging" an equation into form.  Here's a 3-minute video demo. <br>
