@@ -52,6 +52,15 @@ mysql> grant all on coax.* to 'root'@'localhost';
 mysql> grant all on coax.* to 'root'@'%';  (not sure if this is needed)
 </pre>
 
+seshat
+------
+seshat is the stage 1 handwriting recognizer.  (the stage 2 recognizer is a webservice call that does not require installation, except for a key string.)
+> apt-get install libboost-dev
+> wget https://github.com/falvaro/seshat/archive/master.zip
+> <unzip & cd to seshat>
+> make
+> (to be continued)
+
 .bashrc
 -------
 some useful aliases and env's are
