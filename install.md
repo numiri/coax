@@ -24,7 +24,7 @@ env variables -- create these variables:   $cat = tomcat home
 
 Java code
 ---------
-Install tomcat & copy the xml files to your tomcat install (configCmd.xml, web.xml, conf/server.xml, conf/web.xml).  In my env, tomcat lives in the coder's home directory and listens on the port specifed in web.xml.
+Unpack coax-tomcat6-171016.tar & copy the xml files to your tomcat install (configCmd.xml, web.xml, conf/server.xml, conf/web.xml).  In my env, tomcat lives in the coder's home directory and listens on the port specifed in web.xml.
 <pre>
 > ln -s ~/coax-src/coax/trunk/gui $cat/webapps/ROOT/jdoe  (jdoe is coder's name)
 to build the java code, 
@@ -35,6 +35,7 @@ to build the java code,
 > cp coax-common-0.0.1-SNAPSHOT.jar $cat/lib
 > cp coax-db-0.0.1-SNAPSHOT.jar     $cat/lib
 </pre>
+Install Java JDK from Oracle's website and set JAVA_HOME appropriately in your .bashrc.  It's used by   catalina.sh.
 
 database
 --------
@@ -51,6 +52,7 @@ mysql> create database coax;
 mysql> grant all on coax.* to 'root'@'localhost';
 mysql> grant all on coax.* to 'root'@'%';  (not sure if this is needed)
 </pre>
+Be sure to set the database name, login, password in tomcat's config.xml.
 
 seshat
 ------
