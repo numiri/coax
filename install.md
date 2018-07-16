@@ -27,15 +27,18 @@ Java code
 Unpack coax-tomcat6-171016.tar & copy the xml files to your tomcat install (configCmd.xml, web.xml, conf/server.xml, conf/web.xml).  In my env, tomcat lives in the coder's home directory and listens on the port specifed in web.xml.
 <pre>
 > ln -s ~/coax-src/coax/trunk/gui $cat/webapps/ROOT/jdoe  (jdoe is coder's name)
-to build the java code, 
-> cd to the 2 directories dao or common where pom.xml is.
-> apt-get install mvn ?
+To build the java code, 
+> apt-get install maven
+> cd to the 2 directories dao or common where pom.xml is.  This is $trunk/server/common and $trunk/server/dao
 > mvn install
 > cd target
 > cp coax-common-0.0.1-SNAPSHOT.jar $cat/lib
 > cp coax-db-0.0.1-SNAPSHOT.jar     $cat/lib
+> cd $cat/lib; wget http://central.maven.org/maven2/commons-pool/commons-pool/1.4/commons-pool-1.4.jar
 </pre>
-Install Java JDK from Oracle's website and set JAVA_HOME appropriately in your .bashrc.  It's used by   catalina.sh.
+The final step is needed for running on raspbian OS on Raspberry Pi.  I will bundle it in a future release.  The essence of the problem is that Apache's commons-dbcp and commons-pool versions need to match.  If not, you may get the error "org.apache.commons.pool.impl.GenericObjectPool: method \<init\>()V not found"
+
+Install Java JDK from Oracle's website and set JAVA_HOME appropriately in your .bashrc.  tomcat6/bin/catalina.sh uses JAVA_HOME and also sets its own CLASSPATH.  If you need to change the java code & compile it, you will need to set CLASSPATH in your .bashrc as shown below.
 
 database
 --------
