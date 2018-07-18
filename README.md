@@ -5,8 +5,7 @@ Please direct inquiries to numiri@yahoo.com, w/ the subject "Coax math software"
 # coax
 Coax is a math-aware web app to  replace pencil & paper for doing algebra exercises.  The name Coax reflects the act of "massaging" an equation into form.  Here's a 3-minute video demo. <br>
 
-<a href="https://unhomeless.org/demo.mp4"><img src="play-coax.png"></a>
-(see video demo.mp4 file)
+<a href="http://pired.modstein.com:9090/snguyen/web/ours/html/demo.mp4"><img src="play-coax.png"></a>
 
 The coax-0.7.tar ball is 92MB -- 22MB for code & data with the remainder being Apache Tomcat.  See install.md for further instructions.  The project is  in Alpha stage, so some Algebra problems are not appropriate for it and do expect bugs.  This work might be appropriate for organizations with programming staff.<br>
 
