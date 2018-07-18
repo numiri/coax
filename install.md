@@ -2,7 +2,7 @@
 
 pre-requisites
 --------------
-server:  you will need a Linux machine like Ubuntu-16 capable of mysql, tomcat 6 (and jdk 1.8).  You also need basic unix knowledge (env variables, soft links), and root privileges (for mysql).  
+server:  you will need a Linux machine like Ubuntu-16 capable of mysql, tomcat 6 (and jdk 1.8).  You also need mid-level unix knowledge (env variables, soft links), and root privileges (for mysql, access to /usr/local).  
 1.  install mysql with apt-get.  
 2.  tomcat is included in our tar ball from the readme.md page.  
 3.  You will also need JDK 1.8 from Oracle's website or here http://tessm.modstein.com:9089/snguyen/public/jdk-8u25-linux-x64.tar.gz (160MB).
@@ -24,7 +24,7 @@ env variables -- create these variables:   $cat = tomcat home
 
 Java code
 ---------
-Unpack coax-tomcat6-171016.tar & copy the xml files to your tomcat install (configCmd.xml, web.xml, conf/server.xml, conf/web.xml).  In my env, tomcat lives in the coder's home directory and listens on the port specifed in web.xml.
+Unpack coax-tomcat6-171016.tar & copy the xml files to your tomcat install (configCmd.xml, conf/server.xml, conf/web.xml).  In my env, tomcat lives in the coder's home directory and listens on the port specified in server.xml.
 <pre>
 > ln -s ~/coax-src/coax/trunk/gui $cat/webapps/ROOT/jdoe  (jdoe is coder's name)
 To build the java code, 
@@ -59,12 +59,15 @@ Be sure to set the database name, login, password in tomcat's config.xml.
 
 seshat
 ------
-seshat is the stage 1 handwriting recognizer.  (the stage 2 recognizer is a webservice call that does not require installation, except for a key string.)
+seshat is the stage-1 handwriting recognizer.  A stage-2 recognizer is a web service call that does not require installation, except for a key string.  A stage-1 recognizer is intended to recognize a few strokes at a time, mainly for grouping strokes into a single gui-draggable entity.  A stage-2 recognizer is intended for an entire  latex expression, intended for maxima to check the correctness of a completed math Step.
+<pre>
 > apt-get install libboost-dev
 > wget https://github.com/falvaro/seshat/archive/master.zip
 > <unzip & cd to seshat>
-> make
-> (to be continued)
+> make                        # on Raspbian, I needed to increase swap to 2GB.  see /etc/dphys-swapfile
+> cd Config; ln -s .. Config; # strange that this is needed on Raspbian OS.
+> cd ..; mv seshat /usr/local; cd /usr/local/seshat/Config
+</pre>
 
 .bashrc
 -------
@@ -99,3 +102,7 @@ here are the steps if you need to change the java code:
 jsp's don't need explicit compilation.  Tomcat should automatically recompile for you, but try restarting tomcat if the new code doesn't take effect.
 
 javascript doesn't need any compilation, of course.
+
+run app
+-------
+Start tomcat with "t6start".  (mysql usually starts on boot.).  Point your browser to http://host:port/~user/login.jsp. port is in tomcat6's server.xml file.  <~user> is the home directory where you installed the app's java code.  login with demo1/alabama
