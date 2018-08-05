@@ -28,8 +28,10 @@ Unpack coax-tomcat6-171016.tar & copy the xml files to your tomcat install (conf
 <pre>
 > ln -s ~/coax-src/coax/trunk/gui $cat/webapps/ROOT/jdoe  (jdoe is coder's name)
 To build the java code, 
-> apt-get install maven
-> cd to the 2 directories dao or common where pom.xml is.  This is $trunk/server/common and $trunk/server/dao
+> apt-get install maven                       # or download from maven.apache.org
+> cd to the 2 directories dao or common where pom.xml is.  This is $trunk/server/common and $trunk/server/dao\
+> ln -s $cat /usr/local/tomcat6               # pom.xml hard codes /usr/local/tomcat6.  
+                                              # edit pom.xml as appropriate or create this symbolic link.
 > mvn install
 > cd target
 > cp coax-common-0.0.1-SNAPSHOT.jar $cat/lib
