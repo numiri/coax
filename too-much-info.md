@@ -1,5 +1,5 @@
 # directories
-trunk is the center directory.  the bulk of the code is in the "js" directory.
+here is the directory structure of the package.  "trunk" is the center directory.  the bulk of the code is in the "js" directory.
 <pre>
                                                                                               ---+
  catalina.sh -- bin --+                       +- configCmd.xml (paths to binaries cit,..)        |
@@ -27,6 +27,9 @@ catalina.out - logs   |-- ~/big/app/tomcat6 --|  config.xml    (db logins)      
                 ...                                      pom.xml  src -- main/java/com/coax      |
                                                                          /db/dao/*java           |
                                                                                               ---+
+Legend:
+--- dashed lines shows sub-directories & files
+... dotted lines are soft links
 (*) sub-directory WEB-INF/settings_tree.xml
 </pre>
 
