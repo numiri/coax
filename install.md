@@ -18,14 +18,18 @@ env variables -- create these variables:   $cat = tomcat home
 > mkdir ~/coax-src                          (multiple versions of the source can live here)
 > mkdir ~/coax-src/coax-XX                  (XX = version number)
 > tar   -xzf coax-XX.tar.gz                 (trunk dir created)
-> mv   trunk ~/coax-src/coax                (now we have ~/coax-src/coax-XX/trunk)
+> mv    trunk ~/coax-src/coax               (now we have ~/coax-src/coax-XX/trunk)
 > ln -s ~/coax-src/coax-xx ~/coax-src/coax  (switch to other coax versions using soft link)
+> cd    ~/coax-src/coax
+> tar   xzf coax-tomcat6-171016.tar.xzf
+> tar   xzf coax-trunk-171016.tar.xzf
 </pre>
 
 Java code
 ---------
-Unpack coax-tomcat6-171016.tar & copy the xml files to your tomcat install (configCmd.xml, conf/server.xml, conf/web.xml).  In my env, tomcat lives in the coder's home directory and listens on the port specified in server.xml.
+Unpack coax-tomcat6-171016.tar & copy the xml files to your tomcat install (configCmd.xml, conf/server.xml, conf/web.xml).  In my env, tomcat lives in ~/big/app/tomcat6 (env $cat) and listens on the port specified in server.xml.
 <pre>
+> mkdir ~/big; mkdir ~/big/app; mv tomcat6 ~/big/app
 > ln -s ~/coax-src/coax/trunk/gui $cat/webapps/ROOT/jdoe  (jdoe is coder's name)
 To build the java code, 
 > apt-get install maven                       # or download from maven.apache.org
