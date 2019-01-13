@@ -1,4 +1,4 @@
-Since the Microsoft acquisition of Github, the code has moved and you can download it <a href="http://pired.modstein.com:9090/snguyen/web/ours/html/coax-0.7.tar">here</a> (92MB) <br>
+Since the Microsoft acquisition of Github, the code has moved and you can download it <a href="http://pired.modstein.com:9090/public/coax-0.7.tar">here</a> (92MB) <br>
 
 # coax
 Coax is a math-aware web app to  replace pencil & paper for doing algebra exercises.  The name Coax reflects the act of "massaging" an equation into form.  Here's a 3-minute video demo. <br>
