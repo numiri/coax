@@ -4,11 +4,15 @@ here is the directory structure of the package.  "trunk" is the center directory
                                                                                               ---+
  catalina.sh -- bin --+                       +- configCmd.xml (paths to binaries cit,..)        |
 catalina.out - logs   |-- ~/big/app/tomcat6 --|  config.xml    (db logins)                       |
-   coax*.jar -- lib --+          |            +- conf          -- server.xml (ports)             |  tomcat 
+   coax*.jar -- lib --+          |            |  conf          -- server.xml (ports)             |  tomcat 
                           webapps/ROOT/jdoe   |                   web.xml (tomcat configs)       |
-                       ......... : ...........+- settings_tree.xml                            ---+
-                       :         : soft
-                       :         : link
+                                 :            +- settings_tree.xml                            ---+
+                       ......... : ...........:
+                       :         : 
+                       :         :                                                               
+                       :  soft   :                                                               
+                       :  links  :                                                               
+                       :         :                                                               
                        :         :                                                            ---+
                        :         :   cross-files.txt                      main/java/com/coax     |
                        V         :        |              pom.xml  src --  /common/Cli/*java      |
