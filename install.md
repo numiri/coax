@@ -43,25 +43,27 @@ tar ball
 > tar   xzf coax-trunk-171016.tar.xzf
 </pre>
 
-Java code
----------
+tomcat
+------
 Unpack coax-tomcat6-171016.tar & copy the xml files to your tomcat install (configCmd.xml, conf/server.xml, conf/web.xml).  In my env, tomcat lives in ~/big/app/tomcat6 (env $cat) and listens on the port specified in server.xml.
 <pre>
 > mkdir ~/big; mkdir ~/big/app; mv tomcat6 ~/big/app
-> ln -s ~/coax-src/coax/trunk/gui $cat/webapps/ROOT/jdoe  (jdoe is coder's name)
+> ln -s ~/coax-src/coax/trunk/gui $cat/webapps/ROOT/jdoe  (jdoe is coder's username)
+> cd $cat; cd conf; vi server.xml             # find 2 unused ports and set them at these 2 xml tags
+#                                                 Connector port="xxx" protocol="HTTP/1.1" ... and 
+#                                                 Server port="xxx" shutdown=...
+</pre>
+
+Java code
+---------
 To build the java code, 
-> apt-get install maven                       # or download from maven.apache.org
-> cd to the 2 directories dao or common where pom.xml is.  This is $trunk/server/common and $trunk/server/dao\
+<pre>
 > ln -s $cat /usr/local/tomcat6               # pom.xml hard codes /usr/local/tomcat6.  
                                               # edit pom.xml as appropriate or create this symbolic link.
-> mvn install
-> cd target
-> cp coax-common-0.0.1-SNAPSHOT.jar $cat/lib
-> cp coax-db-0.0.1-SNAPSHOT.jar     $cat/lib
+> apt-get install maven                       # or download from maven.apache.org
+> cd $trunk/server/common; mvn install; cd target; cp coax-common-0.0.1-SNAPSHOT.jar $cat/lib
+> cd $trunk/server/dao   ; mvn install; cd target; cp coax-db-0.0.1-SNAPSHOT.jar     $cat/lib
 > cd $cat/lib; wget http://central.maven.org/maven2/commons-pool/commons-pool/1.4/commons-pool-1.4.jar
-> cd $cat; cd conf; vi server.xml             # find 2 unused ports and set them at these 2 xml tags
-#                                               Connector port="xxx" protocol="HTTP/1.1" ... and 
-#                                               Server port="xxx" shutdown="SHUTDOWN"
 </pre>
 The final step is needed for running on raspbian OS on Raspberry Pi.  I will bundle it in a future release.  The essence of the problem is that Apache's commons-dbcp and commons-pool versions need to match.  If not, you may get the error "org.apache.commons.pool.impl.GenericObjectPool: method \<init\>()V not found"
 
