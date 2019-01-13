@@ -32,6 +32,7 @@ alias t6restart='t6stop; t6start'
 
 tar ball
 --------
+unpack the tar ball
 <pre>
 > mkdir ~/coax-src                          (multiple versions of the source can live here)
 > mkdir ~/coax-src/coax-XX                  (XX = version number)
@@ -45,13 +46,13 @@ tar ball
 
 tomcat
 ------
-Unpack coax-tomcat6-171016.tar & copy the xml files to your tomcat install (configCmd.xml, conf/server.xml, conf/web.xml).  In my env, tomcat lives in ~/big/app/tomcat6 (env $cat) and listens on the port specified in server.xml.
+tomcat lives in ~/big/app/tomcat6 (env $cat) and listens on the port specified in server.xml.
 <pre>
 > mkdir ~/big; mkdir ~/big/app; mv tomcat6 ~/big/app
 > ln -s ~/coax-src/coax/trunk/gui $cat/webapps/ROOT/jdoe  (jdoe is coder's username)
 > cd $cat; cd conf; vi server.xml             # find 2 unused ports and set them at these 2 xml tags
-#                                                 Connector port="xxx" protocol="HTTP/1.1" ... and 
-#                                                 Server port="xxx" shutdown=...
+                                              #   Connector port="xxx" protocol="HTTP/1.1" ... and 
+                                              #   Server port="xxx" shutdown=...
 </pre>
 
 Java code
