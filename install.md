@@ -62,6 +62,10 @@ tomcat lives in ~/big/app/tomcat6 (env $cat) and listens on the port specified i
 > vi configCmd.xml                            # set <workpath>
 > rm settings_tree.xml                        #
 > ln -s ~/coax-src/coax/trunk/gui/WEB-INF/settings_tree.xml settings_tree.xml
+> cd $cat/lib; rm commons-pool-1.6.tar
+> wget http://central.maven.org/maven2/commons-pool/commons-pool/1.4/commons-pool-1.4.jar
+# commons-pool version must match common-dbcp version, which is 1.4.
+# settings_tree.xml and commons-pool steps will be automated in the next release.
 </pre>
 
 Install Java JDK from Oracle's website and set JAVA_HOME appropriately in your .bashrc.  tomcat6/bin/catalina.sh uses JAVA_HOME and also sets its own CLASSPATH.  If you need to change the java code & compile it, you will need to set CLASSPATH in your .bashrc as shown below.
