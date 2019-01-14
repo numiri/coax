@@ -34,14 +34,16 @@ tar ball
 --------
 <pre>
 the tar structure is as follows:
-              +- coax-trunk-yymmdd.tar.gz   (unpacks as trunk)
-coax-XX.tar -|  coax-db-yymmdd.sql
-(coax-XX)    +- coax-tomcat6-yymmdd.tar.gz (unpacks as tomcat6)
+
+               +- coax-trunk-yymmdd.tar.gz   (unpacks as trunk)
+  coax-XX.tar -|  coax-db-yymmdd.sql
+  (coax-XX)    +- coax-tomcat6-yymmdd.tar.gz (unpacks as tomcat6)
 
 unpack the above packages into the following dir structure.  create the directories as needed.
-   +- big/app/tomcat6
-~ -|  (the sql file is used in the database section below)
-   +- coax-src/coax-XX/trunk
+
+     +- big/app/tomcat6
+  ~ -|  (the sql file is used in the database section below)
+     +- coax-src/coax-XX/trunk
    
 create a softlink that can point to multiple versions for later
 > ln -s ~/coax-src/coax-xx ~/coax-src/coax  
@@ -52,9 +54,14 @@ tomcat
 tomcat lives in ~/big/app/tomcat6 (env $cat) and listens on the port specified in server.xml.
 <pre>
 > ln -s ~/coax-src/coax/trunk/gui $cat/webapps/ROOT/jdoe  (jdoe is coder's username)
-> cd $cat; cd conf; vi server.xml             # find 2 unused ports and set them at these 2 xml tags
-                                              #   Connector port="xxx" protocol="HTTP/1.1" ... and 
-                                              #   Server port="xxx" shutdown=...
+> cd $cat; cd conf/server.xml                 # find 3 unused ports and set them at these xml tags
+                                              #   Connector port="xxx" protocol="HTTP/1.1" ... 
+                                              #   Connector port="xxx" protocol="AJP/1.3"
+                                              #   Server    port="xxx" shutdown=...
+> vi config.xml                               # set the mysql user login & password
+> vi configCmd.xml                            # set <workpath>
+> rm settings_tree.xml                        #
+> ln -s ~/coax-src/coax/trunk/gui/WEB-INF/settings_tree.xml settings_tree.xml
 </pre>
 
 Install Java JDK from Oracle's website and set JAVA_HOME appropriately in your .bashrc.  tomcat6/bin/catalina.sh uses JAVA_HOME and also sets its own CLASSPATH.  If you need to change the java code & compile it, you will need to set CLASSPATH in your .bashrc as shown below.
