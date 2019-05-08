@@ -5,7 +5,7 @@ pre-requisites
 server:  you will need a Linux machine like Ubuntu-16 capable of mysql, tomcat 6 (and jdk 1.8).  You also need mid-level unix knowledge (env variables, soft links), and root privileges (for mysql, access to /usr/local).  
 1.  install mysql with "apt-get install mysql-server".  also make sure mysql-common is there "dpkg --get-selections | grep mysql"
 2.  tomcat is included in our tar ball from the readme.md page.  
-3.  You will also need JDK 1.8 from Oracle's website or here http://tessm.modstein.com:9090/public/jdk-8u25-linux-x64.tar.gz (160MB).
+3.  You will also need JDK 1.8 from Oracle's website or here http://pired.modstein.com:9090/public/jdk-8u25-linux-x64.tar.gz (160MB).
 
 client:  this app runs on Chrome on Android, iOS, and Windows.  Firefox and Opera might work too.  We <b>strongly</b> recommend using a stylus on a tablet.  Fingers work ok on a Windows touch screen.
 
@@ -54,7 +54,7 @@ tomcat
 tomcat lives in ~/big/app/tomcat6 (env $cat) and listens on the port specified in server.xml.
 <pre>
 > ln -s ~/coax-src/coax/trunk/gui $cat/webapps/ROOT/jdoe  (jdoe is coder's username)
-> cd $cat; cd conf/server.xml                 # find 3 unused ports and set them at these xml tags
+> cd $cat; vi conf/server.xml                 # find 3 unused ports and set them at these xml tags
                                               #   Connector port="xxx" protocol="HTTP/1.1" ... 
                                               #   Connector port="xxx" protocol="AJP/1.3"
                                               #   Server    port="xxx" shutdown=...
