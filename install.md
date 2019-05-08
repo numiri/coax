@@ -59,7 +59,7 @@ tomcat lives in ~/big/app/tomcat6 (env $cat) and listens on the port specified i
                                               #   Connector port="xxx" protocol="AJP/1.3"
                                               #   Server    port="xxx" shutdown=...
 > vi config.xml                               # set the mysql user login & password
-> vi configCmd.xml                            # set <workpath>
+> vi configCmd.xml                            # set <workpath> w/ appropriate username
 > rm settings_tree.xml                        #
 > ln -s ~/coax-src/coax/trunk/gui/WEB-INF/settings_tree.xml settings_tree.xml
 > cd $cat/lib; rm commons-pool-1.6.tar
