@@ -1,0 +1,95 @@
+<SymbolTree>
+	<Category name="Root">
+		<Category name="Digits">
+			<Symbol name="0" unicode="0"/>
+			<Symbol name="1" unicode="1"/>
+			<Symbol name="2" unicode="2"/>
+			<Symbol name="3" unicode="3"/>
+			<Symbol name="4" unicode="4"/>
+			<Symbol name="5" unicode="5"/>
+			<Symbol name="6" unicode="6"/>
+			<Symbol name="7" unicode="7"/>
+			<Symbol name="8" unicode="8"/>
+			<Symbol name="9" unicode="9"/>
+		</Category>
+		<Category name="Hinh">
+			<Symbol name="_heart" unicode="&#9825;" />
+			<Symbol name="_circle" unicode="&#9675;" />
+			<Symbol name="_square" unicode="&#9723;" />
+			<Symbol name="_trapezium" unicode="&#9671;" />
+			<Symbol name="_doudle" unicode="doudle" />
+			<Symbol name="_formula" unicode="formula" />
+			<Symbol name="v" unicode="v" />
+			<Symbol name="V" unicode="V" />
+			<Symbol name="^" unicode="^" />
+		</Category>
+		<Category name="Operators">
+			<Symbol name="dots" unicode="."/>
+			<Symbol name="_plus" unicode="+"/>
+			<Symbol name="_dash" unicode="-"/>
+			<Symbol name="_equal" unicode="="/>
+			<Symbol name="geq" unicode="≥"/>
+			<Symbol name="lt" unicode="&amp;lt;"/>
+			<!--<Symbol name="lt" unicode="&#x003C;"/>-->
+			<Symbol name="neq" unicode="≠"/>
+			<Symbol name="leq" unicode="≤"/>
+                          <Symbol name="greater-than" unicode=">="/>
+							<!--<Symbol name="less-than" unicode="=<"/>-->
+			<Symbol name="int" unicode="∫"/>
+			<Symbol name="times" unicode="x"/>
+			<Symbol name="sum" unicode="Σ"/>
+			<Symbol name="sqrt" unicode="√"/>
+			<Symbol name="lim" unicode="lim"/>
+			<Symbol name="log" unicode="log"/>
+			<Symbol name="ldots" unicode="…"/>
+			<Symbol name="rightarrow" unicode="→"/>
+			<Symbol name="sin" unicode="sin"/>
+			<Symbol name="tan" unicode="tan"/>
+			<Symbol name="cos" unicode="cos"/>
+			<Symbol name="pm" unicode="±"/>
+			<Symbol name="div" unicode="÷"/>
+			<Symbol name="_excl" unicode="!"/>
+		</Category>
+		<Category name="Brackets">
+			<Symbol name="left_bracket" unicode="["/>
+			<Symbol name="right_bracket" unicode="]"/>
+			<Symbol name="_lparen" unicode="("/>
+			<Symbol name="_rparen" unicode=")"/>
+		</Category>
+		<Category name="Special">
+			<Symbol name="infty" unicode="∞"/>
+		</Category>
+		<Category name="Latin Letters">
+			<Category name="Lower Case">
+				<Symbol name="a_lower" unicode="a"/>
+				<Symbol name="b_lower" unicode="b"/>
+				<Symbol name="c_lower" unicode="c"/>
+				<Symbol name="d_lower" unicode="d"/>
+				<Symbol name="e_lower" unicode="e"/>
+				<Symbol name="i_lower" unicode="i"/>
+				<Symbol name="j_lower" unicode="j"/>
+				<Symbol name="k_lower" unicode="k"/>
+				<Symbol name="n_lower" unicode="n"/>
+				<Symbol name="x_lower" unicode="x"/>
+				<Symbol name="y_lower" unicode="y"/>
+				<Symbol name="z_lower" unicode="z"/>
+			</Category>
+			<Category name="Upper Case">
+				<Symbol name="A_upper" unicode="A"/>
+				<Symbol name="B_upper" unicode="B"/>
+				<Symbol name="C_upper" unicode="C"/>
+				<Symbol name="F_upper" unicode="F"/>		
+			</Category>
+		</Category>
+		<Category name="Greek Letters">
+			<Category name="Lower Case">
+				<Symbol name="alpha" unicode="α"/>
+				<Symbol name="beta" unicode="β"/>
+				<Symbol name="gamma" unicode="γ"/>
+				<Symbol name="theta" unicode="θ"/>
+				<Symbol name="pi" unicode="π"/>
+				<Symbol name="phi" unicode="φ"/>
+			</Category>	
+		</Category>
+	</Category>
+</SymbolTree>

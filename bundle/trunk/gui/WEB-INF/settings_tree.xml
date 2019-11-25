@@ -1,0 +1,73 @@
+<SymbolTree>
+	<Category name="Settings">
+		
+		<Category name="Buttons">
+		<Symbol name="relabel" unicode="Label " id="shLabel" value="checked" default=""  tag="input" type="CheckBox"  event="click" function="ShowHideButtons" />
+		<Symbol name="redo" unicode="Redo " id="shRedo" value="checked" default="" tag="input" type="CheckBox"  event="click" function="ShowHideButtons"/>
+		<Symbol name="group" unicode="Group " id="shGroup" value="checked" default="" tag="input" type="CheckBox"  event="click" function="ShowHideButtons"/>
+		<Symbol name="copy" unicode="Copy " id="shCopy" value="checked" default="" tag="input" type="CheckBox"  event="click" function="ShowHideButtons"/>
+		<Symbol name="paste" unicode="Paste " id="shPaste" value="checked" default="" tag="input" type="CheckBox"  event="click" function="ShowHideButtons"/>
+		<Symbol name="kboard" unicode="Key " id="shKboard" value="checked" default="" tag="input" type="CheckBox"  event="click" function="ShowHideButtons"/>
+		<Symbol name="author" unicode="Author " id="shAuthor" value="checked" default="" tag="input" type="CheckBox"  event="click" function="ShowHideButtons"/>
+        <Symbol name="graph" unicode="Graph " id="shGraph" value="checked" default="" tag="input" type="CheckBox"  event="click" function="ShowHideButtons"/>
+        <Symbol name="help" unicode="Help " id="shHelp" value="checked" default="" tag="input" type="CheckBox"  event="click" function="ShowHideButtons"/>
+		</Category>
+		
+		<Category name="Layouts">
+            <Symbol id="right"/>
+  <!-- 
+		<Symbol name="Label" unicode="Left " id="right"  value="checked"  default="true" tag="input" type="Radio" nameTag="layMenu" event="click" function="OptionLayout" />
+		<Symbol name="Label" unicode="Right " id="left" value="checked"  default="" tag="input" type="Radio" nameTag="layMenu" event="click" function="OptionLayout" />
+   -->
+		</Category>
+		
+		<Category name="Gestures">
+     		<Category name="Stroke Ink">
+      		   <Symbol nameTag="radStroke" id="strokefalse"/>
+               <Symbol nameTag="radStroke" id="stroketrue"/>
+  <!-- 
+			<Symbol name="Label" unicode="True " id="stroketrue"  value="checked"  default="" tag="input" type="Radio" nameTag="radStroke" event="click" function="OptionStroke" />
+			<Symbol name="Label" unicode="False " id="strokefalse" value="checked"  default="true" tag="input" type="Radio" nameTag="radStroke" event="click" function="OptionStroke" />
+    -->
+			</Category>
+			<Category name="Interior">
+               <Symbol nameTag="radInterior" id="auto1false"/>
+               <Symbol nameTag="radInterior" id="auto1true"/>
+<!--		<Symbol name="Label" unicode="True " id="auto1true"  value="checked"  default="" tag="input" type="Radio" nameTag="radInterior" event="click" function="OptionInterior" />
+			<Symbol name="Label" unicode="False " id="auto1false" value="checked"  default="true" tag="input" type="Radio" nameTag="radInterior" event="click" function="OptionInterior" />
+    -->
+		    </Category>
+			<Category name="Extend">
+               <Symbol nameTag="radExtend" id="autotrue"/>
+               <Symbol nameTag="radExtend" id="autofalse"/>
+<!--		<Symbol name="Label" unicode="True " id="autotrue"  value="checked"  default="true" tag="input" type="Radio" nameTag="radExtend" event="click" function="OptionExtend" />
+			<Symbol name="Label" unicode="False " id="autofalse" value="checked"  default="" tag="input" type="Radio" nameTag="radExtend" event="click" function="OptionExtend" />
+    -->
+            </Category>
+            <Category name="Check Step Correctness"> <!-- checked = not skip, therefore skipcorxfalse is ON  -->
+                <Symbol nameTag="skipcorx" id="skipcorxfalse"/>
+                <Symbol nameTag="skipcorx" id="skipcorxtrue"/><!-- this skipcorxfalse is needed for ((__t=(item.children[1].id))==null?'':__t)+ -->
+            </Category>
+            <Category name="Show Symbol">
+                <Symbol nameTag="showsymbol" id="showsymboltrue"/>
+                <Symbol nameTag="showsymbol" id="showsymbolfalse"/>
+            </Category>
+            <Category name="1-touch">
+                <Symbol nameTag="OneTouch" id="OneTouchtrue"/>
+                <Symbol nameTag="OneTouch" id="OneTouchfalse"/>
+            </Category>		
+<!--        <Category name="Crosshair">			
+			    <Symbol name="Label" unicode="Height: " id="crssHeight"  value="value"  default="25" css="width: 40px; font-size:15px;" tag="input" type="number" nameTag="radExtend" event="change" function="CrossChange" />
+			    <Symbol name="Label" unicode="Width: " id="crssWidth" value="value"  default="40" css="width: 40px; font-size:15px;" tag="input" type="number" nameTag="radExtend" event="change" function="CrossChange" />
+		    </Category>-->
+		</Category>
+        <Category name="Style">
+            <Symbol id="themes" type="combobox" default="" event="change" function="optionStyle" />
+<!--        <Symbol id="themes" tag="select" type="combobox" css="width: 35%;" default="0" background="white" event="change" function="optionStyle" />
+-->			<!--<Symbol name="Label" unicode="Spring " id="style_spring" value="checked"  default="" tag="input" type="Radio" nameTag="getStyle" event="click" function="optionStyle" />
+			<Symbol name="Label" unicode="Summer " id="style_summer" value="checked"  default="" tag="input" type="Radio" nameTag="getStyle" event="click" function="optionStyle" />
+			<Symbol name="Label" unicode="Autumn " id="style_autumn" value="checked"  default="" tag="input" type="Radio" nameTag="getStyle" event="click" function="optionStyle" />
+			<Symbol name="Label" unicode="Winter " id="style_winter" value="checked"  default="" tag="input" type="Radio" nameTag="getStyle" event="click" function="optionStyle" />-->
+		</Category>
+	</Category>
+</SymbolTree>

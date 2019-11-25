@@ -1,0 +1,8 @@
+This file list flags that are used to indicate state or flow of control.
+
+HS.check_delete
+HS.recorrectD
+HS.recorrectM
+
+E.segments[*].status:   indicates a numerator or denominator.
+ 

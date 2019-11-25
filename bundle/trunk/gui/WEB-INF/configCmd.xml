@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<paths>
+<citcmd>/home/hpham/ffes/CIT/bin/Start_recognizer /home/hpham/ffes/CIT/data/</citcmd>
+<citfence>/home/hpham/ffes/CIT/bin/Start_recognizer /home/hpham/ffes/CIT/fence-data/</citfence>
+<draculapath>/home/hpham/ffes/ffes_0.4/DRACULAE_0.4/src/</draculapath>
+<workpath>/home/hpham/ffes/data-exercise</workpath>
+<activemathpath>/usr/local/activemath-1.0.1/</activemathpath>
+</paths>

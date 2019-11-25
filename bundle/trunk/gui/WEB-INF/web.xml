@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app id="WebApp_ID" version="2.5" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+    <display-name>coax</display-name>
+
+    <context-param>
+        <param-name>login</param-name>
+        <param-value>./login.jsp</param-value>
+    </context-param>
+
+    <context-param>
+        <param-name>coax</param-name>
+        <param-value>./index.jsp</param-value>
+        <!-- <param-value>./freeciv.jsp</param-value>-->
+    </context-param>
+    
+    <context-param> 
+        <description>Location of uploaded files</description> 
+        <param-name>file-upload</param-name> 
+        <param-value>./data</param-value> 
+    </context-param>
+
+    <session-config>
+        <session-timeout>1440</session-timeout>
+    </session-config>
+    <welcome-file-list>
+        <welcome-file>freeciv.jsp</welcome-file>
+        <!--<welcome-file>index.jsp</welcome-file>-->
+    </welcome-file-list>
+</web-app>

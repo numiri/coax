@@ -1,0 +1,162 @@
+# ~/.bashrc: executed by bash(1) for non-login shells.
+# see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
+# for examples
+
+# If not running interactively, don't do anything
+[ -z "$PS1" ] && return
+
+# don't put duplicate lines or lines starting with space in the history.
+# See bash(1) for more options
+HISTCONTROL=ignoreboth
+
+# append to the history file, don't overwrite it
+shopt -s histappend
+
+# for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
+HISTSIZE=1000
+HISTFILESIZE=2000
+
+# check the window size after each command and, if necessary,
+# update the values of LINES and COLUMNS.
+shopt -s checkwinsize
+
+# If set, the pattern "**" used in a pathname expansion context will
+# match all files and zero or more directories and subdirectories.
+#shopt -s globstar
+
+# make less more friendly for non-text input files, see lesspipe(1)
+[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
+
+# set variable identifying the chroot you work in (used in the prompt below)
+if [ -z "$debian_chroot" ] && [ -r /etc/debian_chroot ]; then
+    debian_chroot=$(cat /etc/debian_chroot)
+fi
+
+# set a fancy prompt (non-color, unless we know we "want" color)
+case "$TERM" in
+    xterm-color) color_prompt=yes;;
+esac
+
+# uncomment for a colored prompt, if the terminal has the capability; turned
+# off by default to not distract the user: the focus in a terminal window
+# should be on the output of commands, not on the prompt
+#force_color_prompt=yes
+
+if [ -n "$force_color_prompt" ]; then
+    if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
+	# We have color support; assume it's compliant with Ecma-48
+	# (ISO/IEC-6429). (Lack of such support is extremely rare, and such
+	# a case would tend to support setf rather than setaf.)
+	color_prompt=yes
+    else
+	color_prompt=
+    fi
+fi
+
+if [ "$color_prompt" = yes ]; then
+    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+else
+    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
+fi
+unset color_prompt force_color_prompt
+
+# If this is an xterm set the title to user@host:dir
+case "$TERM" in
+xterm*|rxvt*)
+    PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
+    ;;
+*)
+    ;;
+esac
+
+# enable color support of ls and also add handy aliases
+if [ -x /usr/bin/dircolors ]; then
+    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    alias ls='ls --color=auto'
+    alias grep='grep --color=auto'
+    alias fgrep='fgrep --color=auto'
+    alias egrep='egrep --color=auto'
+fi
+
+# some more ls aliases
+alias ll='ls -alF'
+alias la='ls -A'
+alias l='ls -CF'
+
+# enable programmable completion features (you don't need to enable
+# this, if it's already enabled in /etc/bash.bashrc and /etc/profile
+# sources /etc/bash.bashrc).
+if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
+    . /etc/bash_completion
+fi
+
+############
+# sebastian
+############
+
+######
+# java
+######
+
+export JAVA_HOME='/usr/local/share/java/jdk1.8.0_25'
+export PATH=.:$JAVA_HOME/bin:$PATH
+export JRE_HOME=$JAVA_HOME
+export CAT_HOME='/home/xxx/big/app/tomcat6'
+export CATALINA_HOME='/home/xxx/big/app/tomcat6'
+export CAT=$CATALINA_HOME
+export CAT_HOME_LOCALHOST='$CAT_HOME/work/Catalina/localhost'
+export CAT_HOME_JSP='$CAT_HOME_LOCALHOST/_org/apache/jsp'
+export JAVACCOAX='/home/xxx/coax-src/coax/trunk/server/common/src/main/java'
+export CLASSPATH=.:$JAVACCOAX:"$CAT_HOME/lib/*":$CAT_HOME/lib:$TRUNK/src/main/java/com/coax/db/dao:$TRUNK/src/main/java/com/coax/db/dto:$CAT_HOME/lib/tomcat-juli.jar
+
+#################
+# other variables
+#################
+export TRUNK='/home/xxx/coax-src/coax/trunk'
+export EDITOR='vi'
+
+#########
+# aliases
+#########
+
+alias checkout='svn co file:///opt/svn/dat/modulus/coax'
+alias cdcli='cd $TRUNK/server/common/src/main/java/com/coax/common/Cli'
+alias cddao='cd $TRUNK/server/dao/src/main/java/com/coax/db/dao' 
+alias cdserverdao='cd $TRUNK/server/dao'
+alias cdtrunk='cd $TRUNK'
+alias cdjs='cd $TRUNK/gui/web/ours/js'
+alias cdjsp='cd $TRUNK/gui/web/ours/jsp'
+alias cdours='cd $TRUNK/gui/web/ours'
+alias cdtheirs='cd $TRUNK/gui/web/theirs'
+alias cdcommon='cd $TRUNK/server/common'
+alias cdjasp='cd ~/big/app/tomcat6/work/Catalina/localhost/_/org/apache/jsp/xxx/web/ours/jsp'
+alias mysqlcoax='mysql --user=root --password=sercurity --database=dbcoax'
+alias cdwebroot='cd $CAT_HOME/webapps/ROOT'
+alias llwebroot='ls -l /usr/local/tomcat6/webapps/ROOT'
+
+alias cdcli='cd ~/coax-src/coax/trunk/server/common/src/main/java/com/coax/common/Cli'
+alias cddemo='cd /usr/local/tomcat6/webapps/ROOT/demo/web/ours/js'
+alias cdforensics='cd /home/ddo-forensics-1312xx'
+alias cdmerge='cd /home/ddo-forensics-1312xx/merge/trunk/gui/web/ours'
+alias cdpet='cd ~/big/app/pet-rex/src'
+alias cpdbjar='cp /home/xxx/coax-src/coax/trunk/server/dao/target/coax-db-0.0.1-SNAPSHOT.jar $CAT_HOME/lib'
+alias cpccjar='cp /home/xxx/coax-src/coax/trunk/server/common/target/coax-common-0.0.1-SNAPSHOT.jar $CAT_HOME/lib'
+alias cdt6='cd ~/big/app/tomcat6'
+alias cdt8='cd $CAT_HOME'
+alias t6log='tail -f $CAT_HOME/logs/catalina.out'
+alias t6start='$CAT_HOME/bin/catalina.sh start'
+alias t6debug='$CAT_HOME/bin/catalina.sh debug'
+alias t8debug='$CAT_HOME/bin/catalina.sh debug'
+alias t8start='$CAT_HOME/bin/catalina.sh start'
+alias t8stop='$CAT_HOME/bin/catalina.sh stop'
+alias t6stop='$CAT_HOME/bin/catalina.sh stop'
+alias t6restart='t6stop; t6start'
+alias t6break='stop at org.apache.jsp.xxx.web.ours.jsp.folder_jsp:50'
+alias t6dbug='$JAVA_HOME/bin/java -Djava.util.logging.config.file=$CAT_HOME/conf/logging.properties -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager -Djava.endorsed.dirs=$CAT_HOME/endorsed -classpath $CAT_HOME/bin/bootstrap.jar -Dcatalina.base=$CAT_HOME -Dcatalina.home=$CAT_HOME6 -Djava.io.tmpdir=$CAT_HOME/temp -Djava.library.path=/usr/lib/jni -Xnoagent -Xdebug -Xrunjdwp:transport=dt_socket,address=5752,server=y,suspend=n org.apache.catalina.startup.Bootstrap start'
+alias t8dbug='$JAVA_HOME/bin/java -Djava.util.logging.config.file=$CAT_HOME/conf/logging.properties -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager -Djava.endorsed.dirs=$CAT_HOME/endorsed -Dcatalina.base=$CAT_HOME -Dcatalina.home=$CAT_HOME -Djava.io.tmpdir=$CAT_HOME/temp -classpath .:/home/xxx/coax-src/coax/trunk/server/common/src/main/java:/home/xxx/big/app/tomcat8/lib/*:/home/xxx/big/app/tomcat8/lib:/home/xxx/coax-src/coax/trunk/src/main/java/com/coax/db/dao:/home/xxx/coax-src/coax/trunk/src/main/java/com/coax/db/dto:/home/xxx/big/app/tomcat8/bin/tomcat-juli.jar -agentlib:jdwp=transport=dt_socket,address=5752,server=y,suspend=n org.apache.catalina.startup.Bootstrap start'
+alias svndiff='echo in xterm only:   svn --diff-cmd \"diff\" --extensions \"-y --suppress-common-lines\" diff HistoriesDAO.java'
+alias svncocoax='svn co file:///opt/svn/dat/modulus/coax'
+
+alias bouncejar='cpccjar; $CAT_HOME/bin/catalina.sh debug'
+alias javacli='javac -cp "/home/xxx/coax-src/coax/trunk/server/common/src/main/java:/home/xxx/big/app/tomcat6/lib/*" Corx.java >& /tmp/junk.txt'
+alias psjava='ps -ef | grep java'

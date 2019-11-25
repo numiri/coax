@@ -1,0 +1,406 @@
+/*******************************************************************************
+INTENT:  document code that is relevant to multiple files, such as data 
+         exchanges between client & server, or cross file caller-callee 
+         exchanges.
+ 
+USAGE:
+
+1. Code files can reference this document using markers of the following format:
+      "#doc-" + <file> "-" <function or sequence>
+      eg.  #doc-folders.jsp::a
+2. Expect the details here to drift from code because this level of detail 
+   is very fluid.  The intent is to give a rough approximation of the 
+   exchanges, not implementation level details.
+
+ABBREVIATIONS:
+SL = SegmentList, AR = AlignResponse,  e = exerciseStep, CR = corx response   
+P  = Phrases    , E  = Editor       , AG = AutoGroup   , RM = RecognitionManager
+********************************************************************************/
+
+/*******************************************************************************
+#doc-PenStroke.js, Events.Gestures.js
+*******************************************************************************/
+sequence for beautifying a flat stroke:
+Classifier.js::ajax{ success:...}
+|-> TouchEnd(...in_segments)  (in Events.Gestures.js)
+    |  $("#svgId")[0].removeChild(segments.element); (remove ugly stroke)
+    |  .. segments.finish_stroke(segments.world_mins, segments.scale, "value"); }
+    |-> finish_stroke()    (in PenStroke.js)
+        |  if(bBool){ objSvg.appendChild(Editor.createg()); 
+        |  Editor.canvas_div.appendChild(objSvg);}
+
+/*******************************************************************************
+#doc-jbuild-shared.jsp, shared.jsp
+*******************************************************************************/
+see shared.jsp for documentation.  It's kept there because the documentation is 
+helpful to the user as well as programmer.
+
+/*******************************************************************************
+#doc-corx.jsp, #doc-Corx.java
+*******************************************************************************/
+
+*******                                   Corx
+summary:  "<steps .../>" -------------> structure --------------> "<CR T,F />"
+*******                    parsed in                Maxima call
+                           Corx.java                Corx.java ...
+******
+static
+******
+
+input:
+  <steps guid=.. > 
+  <Exercise idExp = "NaN" stepExp = "0" hint ="false" title="" idActiveMath="" userInputPostion ="-1" />
+  <step order=old variable=x,y|y fraz=3x-2x,6y.. />
+  <step order=new variable=x,y|x fraz=5x+2y,4x.. /> 
+  </steps>
+
+parsed:
+  +-------------------------- Corx --------------------------------------+
+  | +------------------------ steps -----------------------------------+ |
+  | |   +-------------------- Step ----------------------+             | |
+  | |   |  +--------------- frazs ------------------+    |             | |
+  | |   |  | +----- fraz ----+  +----- fraz ----+   |    |             | |
+        |  | |               |  |               |   |    |
+  { +-                                                                -+ 
+    |   {  [ {fraz1,variable1}, {fraz2,variable2},..], 4 }  <-- step 4 |
+    |   {  [ {fraz1,variable1}, {fraz2,variable2},..], 5 }  <-- step 5 |
+    +-                                                 ^              -+
+    <ExerciseStep istrue=F isfinish=T message=null />  |
+  }                                                    |
+  fraz1 = Corx.steps.get(0).frazs.get(0).fraz        order
+
+*******	
+dynamic
+*******
+
+<SL><S points="25,0|25,0|24,...,17|2,18"/></Sl>
+| stroke2symbol:
+|
+| C.classify()
+| -> recognizer.jsp
+| -> RecognizerXml.java::BuildXml()
+| -> Cmd.Recognizer()
+| -> Runtime.getRuntime().exec( GetXmlCofig(cconfigCmd, ccitcmd), datapoints );
+V
+<sl> <s "3" min..max..>
+
+|
+|  E.align 
+V
+
+<e><sl> ...<s "3" min..max..>... <maxima> $3x-2x$,$..$ </maxima></e>
+| steps.jsp { sParam = request.getParameter("segments") .. }
+| -> MultiAlign.Execute( datfile, browser's ip address ).  ip used to name logfile.
+|    * loop syq: Align.CreateBstFile() -> Cmd.GetTeX {*}
+|       {*} = Exec.Process(GetXmlConfig(web-inf/configCmd.xml, cdraculaepath))
+|    Move to corx: Compare() -> CompareMaxima()..solve()..BuildAlignResponse()
+| -> BuildAlignResponse()
+V
+<AR>            <maxima> $3x-2x$,$..$ </maxima>
+<SL guid=0..f TexString="$2x+3y=8$"  variable=x,y> <image>..</SL>
+<SL guid=5..a TexString="$x6+4y=14$" variable=x,y> <image>..</SL> /AR>
+
+|
+| EE.postAlign() -> parseAlignResponse
+V
+
+transition: <P> <maxima var=x,y fraz=3x-2x /> <step order=new variable=x,y fraz=5x,.. /> </P>
+transition: <P> <maxima var=x,y >3x-2x,.. </maxima>      <step order=new variable=x,y> 5x,.. </step> </P>
+wish: (see  #doc-corx.jsp "static")
+            <steps guid=.. > 
+              <Exercise idExp = "NaN" stepExp = "0" hint ="false" title="" idActiveMath="" userInputPostion ="-1" />
+              <step order=old variable=x,y|y fraz=3x-2x,6y.. />
+              <step order=new variable=x,y|x fraz=5x+2y,4x.. /> 
+            </steps>
+ Step class is a rework of Expression.java
+if the exercise is syq, it has a list of latexs
+a fraz is 1 expression, not a syq
+
+| corx.jsp 
+| -> Corx.java::Execute()
+|  -> BuildDatFile()
+| -> CompareMaxima()
+| -> BuildSolveString()
+| code pilfered from MA.java
+| -> Compare()
+|    -> CompareMaxima 
+|    -> ConnectMaxima.Solve( "if solve(bss(preMaxima)) = solve(bss(newMaxima)) then 1 else 0" )
+| -> BuildCorxResponse(): t/f -> <ar>..<SL>*..</ar>   emulate BuildAlignResponse()
+V
+<CR result="1" error="" message="..."> 
+<ExerciseStep istrue=F isfinish=F message=”null” /> </CR>
+(the only piece of data used is result=0/1, the rest is vestigial cuz EE.postCorx() 
+still reference them.  we can remove the rest when code gets cleaned up.
+
+/*******************************************************************************
+#doc-Settings.js Editor.Buttons.js #doc-settings_tree.xml
+#doc: adding a button to footer menu and setting page popup
+*******************************************************************************/
+A - Notice for adding a New Button to Footer menu & Setting popup:
+1- insert into gui/WEB-INF/settings_tree.xml @ Category name=“Buttons” —> this for the display on Setting popup
+<Symbol name="help" unicode="Help " id="shHelp" value="checked" default="" tag="input" type="CheckBox"  event="click" function="ShowHideButtons"/>
+
+2- copy the settings_tree.xml to tomcat library
+2.1- Add button to the footer menu in Editor.Buttons.js:
+2.2- Add state: Buttons.Help = 14 (buttons length -1)
+2.3- Add button to the variable toolbars: {order:'15',id:'help',label:'Help',  default:'1', display:'block', icon:"question",position:"2”}
+2.4- Add state to Editor.button_states in method Editor.build_buttons: Editor.button_states.push(new ButtonState("help"));
+2.5- Add label Editor.button_labels.push("Help");
+
+3- update mysql:
+3.1- default_settings table: 
+insert into default_settings (name,value,description) values('shHelp','0','Help');
+3.2- settings table for every user: 
+insert into settings(userId,configId,name,value)  select 1,ds.id,ds.name,ds.value from default_settings ds where ds.name in ('shHelp’);
+(1 is userId of Admin user)
+if setting table doesn’t contain the button for the user, the button will be returned with value of “del” causing hide button action will be effected in working session only, 
+
+B - Code Flow for Setting
+
+SettingsMenu.initialize (userId, Username)
+|—> SettingsMenu.user = userId
+|—> SettingsMenu.BuildSetting() 
+       |—> get_setting() —> Editor.url_setting settings.jsp without query —-> XmlDAO.java reasXml(userId)———|
+       |     |—> call procedure getConfigUser(userid) & read from settings_tree.xml 
+       |—> findConfig (to set value true/false/del to items) —>return out settingsxml
+       |—> SettingsMenu.onlyButton(SymbolTree.parseXml(settingsxml)...)  (this method is for the buttons on the footer)
+       |—> create up li_html for settings popup  —> $('#page-setting-content').append(li_html);
+
+C - Code Flow for showing/hiding buttons on Setting popup:
+
+Click on checkbox in order to show/hide the button on the menu
+-->ShowHideButtons —> SwitchStatus 
+   |—> UpdateSettingValue
+   |—> UpdateDisplay
+   |—> SettingsMenu.postServer() 
+       |—>  Ajax Editor.url_setting 
+            ./web/ours/jsp/settings.jsp?setting=<Root id = "1"><Symbol id = "shLabel" default = "true"></Symbol></Root>
+              |—>  XmlDAO.java wirteSetting(settingxml) —> SettingDAO.java updateOnSubmint(Settings) —> CALL CRUDSetting
+
+/*******************************************************************************
+#doc-steps.jsp, #doc-MultiAlign.java                    (obsolete as of 2015)
+*******************************************************************************/
+(see corx.jsp & Corx.java)
+
+filename changes due to maxectomy
+steps.jsp       -> corx.jsp
+MultiAlign.java -> Corx.java
+
+input  <Exercise>     attributes are used for ActiveMath
+output <exerciseStep> attributes are used for ActiveMath
+
+********
+* single equation
+********
+
+INPUT: 
+?segments = 
+<Expressions guid = "76785786-174c-4b16-106f-6d03aa03cf1b">
+<Exercise idExp="NaN" stepExp="0" hint="false" title="" idActiveMath="" userInputPostion ="-1"></Exercise>
+<SegmentList guid = "e64064d0-3a69-f482-5d47-17b082e12802">
+... <Segment symbol="_equal" min="605,107" max="639,124" id="2"/> ...
+<maxima variable="x,y">$3x=6$</maxima>
+</SegmentList></Expressions>
+
+********
+* Here's a Syq example.  note there's no Latex, even in the Previous step!?!
+********
+
+INPUT:
+<Expressions guid = "afcc32bf-6463-8ca9-4706-ba7eaf8b44aa">
+<Exercise    idExp="NaN" stepExp="0" hint="false" title="" idActiveMath="" userInputPostion ="-1">
+</Exercise>
+<SegmentList guid = "5b5c3501-75da-2c61-d89d-aadcfdc1dcc4">
+<Segment     symbol="_equal" min="605,120" max="639,137" id="713"/><Segment symbol="_plus" min="447,113" max="491,152" id="716"/><Segment symbol="x_lower" min="357,111" max="399,147" id="719"/><Segment symbol="8" min="668,100" max="688,149" id="721"/><Segment symbol="2" min="302,109" max="333,155" id="723"/><Segment symbol="3" min="545,101" max="567,151" id="725"/><Segment symbol="y" min="508,104" max="538,166" id="727"/>
+<maxima      variable="x,y"></maxima></SegmentList>
+<SegmentList guid = "49040412-9d2e-5190-0363-d4417492e480">
+<Segment     symbol="_equal" min="612,215" max="638,230" id="730"/><Segment symbol="4" min="699,208" max="721,237" id="733"/><Segment symbol="_plus" min="431,212" max="475,251" id="736"/><Segment symbol="1" min="673,205" max="678,237" id="738"/><Segment symbol="4" min="540,208" max="562,237" id="741"/><Segment symbol="x_lower" min="357,213" max="399,249" id="744"/><Segment symbol="6" min="306,207" max="328,249" id="746"/><Segment symbol="y" min="500,205" max="530,267" id="748"/>
+<maxima      variable="x,y"></maxima></SegmentList></Expressions>
+
+OUTPUT: xml string 
+<AlignResponse  result="0" error="">
+<exerciseStep message="null"  istrue="false" isfinish="false"/>
+<SegmentList  guid=... TexString="$x2+3y=8$"  variable="x,y"><image>..</SegmentList>
+<SegmentList  guid=... TexString="$6x+4y=14$" variable="x,y"><image>..</SegmentList></AlignResponse>
+
+/*******************************************************************************
+#doc-folders.jsp
+*******************************************************************************/
+
+OUTPUT: json string
+"folders":  [ { "id":"3", "name":"eee", "description":"www", "parentId":"2", "rowGuid":"4...5", "userId":"1"}, ..., {id:..} ],
+"exers":    [ { "id":"127", "exerciseId":"1", "exerciseName":"7:33am", "folderId":"5", "xiznum":"7:33am", "variable":"     x", "amid":"null", "latex":"     $(x+2)(x-3)$", "friendly_id":"1.7:33am", "folderName":"eeeeyuuYay"}, ..., {id:..} ],
+"versions": [ {"exerciseid":0,"userid":5,"version":0}, ... {exerciseid:..}]       }
+
+/*******************************************************************************
+#doc-folder.jsp-b
+********************************************************************************
+
+{ "id":"26", "name":"ssss", "description":"asdas", "parentId":"20", "rowGuid":"999c31cd-4a75-4ad2-96f2-00002f874fe2", "userId":"1"}
+folder.jsp ? parentId=19 & name=aa & description=dd & userId=1 & fn=0 & _=1388424234908
+
+/*******************************************************************************
+#doc-fiz.jsp
+********************************************************************************
+
+[{ "id":"180", "exerciseId":"5", "exerciseName":"7:35am", "folderId":"3", "xiznum":"", "variable":"", "amid":"", "latex":"", "friendly_id":"", "folderName":"eee"}]
+
+/*******************************************************************************
+#doc-fiz.jsp-b
+********************************************************************************
+
+{"exers":[{ "id":"1", "formula":"$(x+2)(x-3)$", "content":"7:33am"}],"pages":6}
+
+/*******************************************************************************
+#doc-fiz.jsp-c
+********************************************************************************
+
+[{ "id":"281", "exerciseId":"25", "exerciseName":"", "folderId":"21", "xiznum":"", "variable":"", "amid":"", "latex":"", "friendly_id":"", "folderName":""}]
+
+/*******************************************************************************
+#doc-grp.jsp
+********************************************************************************
+
+[{ "id":"972", "name":"zoro", "username":"ddo", "groupId":"21", "userId":"2"}...]
+
+/*******************************************************************************
+#doc-grp.jsp-a
+********************************************************************************
+
+[{ "id":"994", "name":"", "username":"", "groupId":"21", "userId":"83"},{ "id":"993", "name":"", "username":"", "groupId":"21", "userId":"79"}]
+
+/*******************************************************************************
+#doc-group.jsp
+********************************************************************************
+
+{ "id":"23", "name":"sss", "description":"aaa", "parentId":"6", "rowGuid":"da816e34-45b7-4b2b-8840-48f0a97aeaf5", "userId":"1"}
+Iries()") {
+       jdbc.x.executeQuery("call getHistories()") -> select * from histories }}}}}
+
+OUTPUT: json string
+[{ formula:$(x+2)(x-3)$, id:15768, exerciseId:5, stepFrom:0, stepTo:0, result:true
+   , stroke : <root><segments><group symbol=_lparen> <points>...</segments> <color>green</color></root>
+   , status:false, action:1, createdOn:Nov19,2013, sessionId:0, userId:5, parentID:15768, image:"", version:3}
+{  formula:$(x2)(x-3)$ ... }
+{  ... } ]
+
+------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------
+submit EE.align() (there are 2 cases: Modify a step or Insert a new step)
+------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------
+1. EE.align() —> (Rex.js)Mic.fraz() —> Mic.frazCorx —-> Mic.fraz1z —> call to MMip http://micm.modstein.com:8069/api/MMip
+Request:[Points]
+
+Response:
+<AR result="0" error=""><exerciseStep message="" istrue="true" isfinish="false" /><SL variable="" guid=“..” TexString="${x}^{2}-x-6$" /></AR>
+
+2. Mic.frazCorx —> call ajax get http://../tgnguyen/web/ours/jsp/corx.jsp
+Request:
+qstring=
+<steps guid = “..”> <Exercise idExp = "NaN" stepExp="0" hint="false" title="" idActiveMath="" userInputPostion="-1" /><step order="old" fraz="$3{C}^{2}-x-6$" variable="x,y" /><step order="new" fraz="${x}^{2}-x-6$" variable="x,y" /></steps>
+
+Response:
+<CorxResponse result="false" message="placeholder" > <ExerciseStep istrue="hardcode" isfinish="hardcode" message="null" /> </CorxResponse>
+
+
+3. Ajax success —> Editor.postCorx —> (History.js)HistorySegments.TableList —>
+
+Either 3.1 —> writeNewStep (The selected step is the last step)
+build HistorySegments.stringXml.strings[2] as below 
+
+<segments userId = "67" exerId = "5" selectId = "5" historyId = "-1" status = "1" latex = "${x}^{2}-x-6$" fromStep = "11" toStep = "12"  version = "5">
+    <group symbol = "x">
+        <points>0,0|..</points>
+        <minPos> 541.5,121-566.5,117</minPos>
+        <symbols>x_lower</symbols>
+        <scale>1</scale>
+    </group>
+.... other groups .... 
+</segments>
+
+Or 3.2 —> overwriteStep (The selected step is neither the first nor the last step)
+build HistorySegments.stringXml.strings[2] as below
+
+    <segments userId = "67" exerId = "5" selectId = "5" historyId = "17543" status = "2" latex = "${x}^{2}-x-6$" fromStep = "-1" toStep = "-1"  version = "5">
+        <group symbol = "x">
+            <points>0,0|..</points>
+            <minPos> 579.5,132.625-604.5,128.625</minPos>
+            <symbols>x_lower</symbols>
+            <scale>1</scale>
+        </group>
+.... other groups ....
+    </segments>
+
+4. Editor.postCorx —> HistorySegments.sendData
+
+Status variable in HistorySegments.stringXml can have value as below: 
+       1 - Insert a new step
+       2 - Update an existing step
+       3 - Delete a step
+       4 - Update the result flag of a step 
+
+call to http://../tgnguyen/web/ours/jsp/exercises.jsp
+Request:
+action:<root>
+    HistorySegments.stringXml built in writeNewStep/overwriteStep
+    <color>red</color>
+</root>
+
+4.1 exercises.jsp action != null 
+—> (XmlDAO.java).Histories(action) 
+—> 
+    Either (IData.java).updateOnSubmint(item, 3) for deleting a step;
+    Or     (IData.java).updateOnSubmint(item) for updating an existing step;
+    Or     (IData.java).updateOnSubmint(item, 2) for updating the result flag of a step;
+    Or     (IData.java).insertOnSubmit(item) for Insertion;
+ 
+—> (HistoriesDAO.java).OnSubmit() 
+—> either updateHistories() for deletion
+   or     CALL mySQL procedure CRUDHistory for modification & insertion
+
+Response json:  {"historyId":16431,"version":42}
+
+
+
+xml string                     item                          cs callablestatement
+(exercises.jsp)           (Histories.java)                   (HDAO.java)               
+---------------           ----------------                   -----------
+<segments>     -+             stroke          -+             cs.p_exerciseId           
+status(1/2/3/4) |             action(1/2/3/2)  |             cs.p_action                    
+latex           |Histories()  formula          |OnSubmit()   cs.p_formula              
+fromStep        +-----------> stepFrom         +---------->  cs.p_stepFrom             
+toStep          |XmlDAO.java  stepTo           |HDAO.java    cs.p_stepTo               
+selectId        |             sessionId        |             cs.p_sessionId            
+version         |             version          |             --none--                  
+exerciseid      |             exerciseId       |             cs.p_exerciseId           
+historyId      -+             id              -+             cs.p_id 
+                                                             cs.p_t (0/1/3/2)   
+
+5. Editor.postCorx —> 
+   if(HistorySegments.recorrectM == 1)
+       —> need recheck the correctness of step “n + 1”
+	  HistorySegments.recorrectD = true;
+	  HistorySegments.index++;
+	  Editor.align();             
+
+   else if(HistorySegments.recorrectM == -1) 
+       —> done rechecking for step n+1, need reset the index & recorrectM
+	  HistorySegments.index--;
+	  HistorySegments.recorrectM = 0;
+               
+
+------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------
+delete HS.deleteStep()
+------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------
+1. HS.sendData
+2. if the deleted step is an interior —> recheck the correctness for the result of
+step n+1
+    HistorySegments.recorrectD = true;    
+    HistorySegments.set_action = true;    
+    Editor.align();
+
+
+

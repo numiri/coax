@@ -1,0 +1,743 @@
+
+dy {
+                background-color: #BBBBBB;
+                overflow: hidden;
+            }
+
+            div {
+                -webkit-user-select: none;
+                -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+                -webkit-touch-callout: none;
+                -webkit-user-select: none;
+                -khtml-user-select: none;
+                -moz-user-select: none;
+                -ms-user-select: none;
+                user-select: none;
+
+            }
+
+            div:focus {
+                outline: none;
+            }
+
+            canvas:focus {
+                outline: none;
+            }
+
+            svg:focus {
+                outline: none;
+            }
+
+            div#parent_root {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                overflow: hidden;
+            }
+            
+            div.equation_editor {
+                height: 95%;
+                width: 94%;
+                position: absolute;
+                left: 0px;
+                top: 0px;
+                font-family: Tahoma, Geneva, sans-serif;
+            }
+            /* used for any buttons to change mouse cursor*/
+            .button:hover {
+                cursor: pointer;
+            }
+
+            div#relabel_menu,div#settings_menu,div#formula_menu {
+                top: 20px;
+                background-color: white; // rgba (1,1,1,0); //
+                overflow: hidden;
+                width: 60%;
+                height: 400px;
+                z-index: 1000;
+                margin: 0px auto;
+                opacity: 0.8;
+                border: 10px solid #DDDDDD;
+                border-radius: 5px;
+                -moz-box-shadow: 10px 10px 10px rgba(64, 64, 64, 0.5);
+                -webkit-box-shadow: 10px 10px 10px rgba(64, 64, 64, 0.5);
+                left: 20%;
+                right: 20%;
+                position: absolute;
+            }
+
+            div#rr_node_label,div#st_node_label,div#fm_node_label {
+                position: absolute;
+                width: 100%;
+                top: -8px;
+                bottom: 93%; 4
+                background-color: #DDDDDD;
+                font-size: 20px;
+                font-height: 30px;
+                font-effect: outline;
+            }
+
+            div#rr_close_button,div#st_close_button,div#fm_close_button {
+                position: absolute;
+                width: 9%;
+                top: -9px;
+                height: 20px;
+                left: 91%;
+                /* Text */
+                text-align: center;
+                font-size: 18px;
+                font-height: 20px;
+                font-weight: 900;
+                color: #EEE;
+                -webkit-text-stroke: 0.75px #000;
+                font-family: Arial, Helvetica, sans-serif;
+                /* gradient */
+                background: #FF5C49; /* old browsers */
+                background: -moz-linear-gradient(top, #FF5C49 0%, #E89F99 29%, #FF5C49 94%);
+                /* firefox */
+                background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #FF5C49),
+                    color-stop(29%, #E89F99), color-stop(94%, #FF5C49) ); /* webkit */
+                filter: progid:DXImageTransform.Microsoft.gradient(        startColorstr='#FF5C49',
+                    endColorstr='#FF5C49', GradientType=0 ); /* ie */
+                background: -o-linear-gradient(top, #FF5C49 0%, #E89F99 29%, #FF5C49 94%);
+                /* opera */
+                /* end gradient */
+                /* border */
+                border-style: groove;
+                border-bottom-right-radius: 4px;
+                border-bottom-left-radius: 4px;
+                border-width: 0px 2px 2px 2px;
+                border-color: #888;
+            }
+
+            div#rr_close_button:hover,div#st_close_button:hover,div#fm_close_button:hover
+            {
+                background: #FF4732; /* old browsers */
+                background: -moz-linear-gradient(top, #FF4732 0%, #F97C75 29%, #FF4935 94%);
+                /* firefox */
+                background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #FF4732),
+                    color-stop(29%, #F97C75), color-stop(94%, #FF4935) ); /* webkit */
+                filter: progid:DXImageTransform.Microsoft.gradient(        startColorstr='#FF4732',
+                    endColorstr='#FF4935', GradientType=0 ); /* ie */
+                background: -o-linear-gradient(top, #FF4732 0%, #F97C75 29%, #FF4935 94%);
+                /* opera */
+            }
+
+            span.rr_node {
+                background-color: #B8B8B8;
+                padding: 2px 4px 4px 5px;
+                border-style: inset;
+                border-bottom-right-radius: 4px;
+                border-bottom-left-radius: 4px;
+                border-width: 0px 2px 2px 2px;
+                border-color: #A8A8A8;
+                height: 30px;
+            }
+
+            span.rr_node_delimiter {
+                font-height: 23px;
+                font-size: 15px;
+            }
+
+            div#rr_inner,div#st_inner {
+                position: absolute;
+                border-style: inset;
+                border: 2px inset #AAA;
+                border-radius: 4px;
+                left: -2px;
+                height: 93%;
+                width: 100%;
+                margin: auto;
+                top: 7%;
+            }
+
+            div#rr_up_tree {
+                position: absolute;
+                left: 0px;
+                top: 0px;
+                width: 100%;
+                height: 10%;
+                background-color: #bbbbbb;
+            }
+
+            div#rr_center,div#st_center {
+                position: absolute;
+                overflow-y: scroll;
+                overflow-x: hidden;
+                top: 0%;
+                height: 100%;
+                width: 100%;
+                background-color: #ccc;
+            }
+
+            div#rr_symbol_grid {
+                position: relative;
+                width: 100%;
+                height: 100%;
+            }
+
+            div.symbol_cell {
+                cursor: pointer;
+                width: 33%;
+                height: 33%;
+                float: left;
+                background-color: rgba(196, 196, 196, 1);
+                text-align: center;
+                ont-size: 40px;
+                border-style: solid;
+                border-width: 0px 1px 1px 0px;
+                font-size: 40px;
+                font-family: "Times New Roman", Georgia, Serif;
+            }
+
+            div#rr_category_list,div#st_category_list {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+            }
+
+            div.category_row {
+                height: 25%;
+                width: 100%;
+                background-color: rgba(196, 196, 196, 1);
+                text-align: center;
+                max-height: 20%;
+                max-width: 100%;
+                font-size: 40px;
+                border-style: solid;
+                border-width: 0px 0px 1px 0px;
+                max-height: 20%;
+                font-family: "Times New Roman", Georgia, Serif;
+            }
+
+            div.equation_canvas {
+                display: block;
+                background-color: #FFFFFF;
+                position: relative;
+                width: 100%;
+                height: 100%;
+                overflow: hidden;
+            }
+            /* toolbar stuff */
+            div.toolbar {
+                position: relative;
+                //display: block;
+                visibility: hidden;
+                /** background color **/
+                background: #DCD7C8; /* old browsers */
+                background: -moz-linear-gradient(left, #DCD7C8 0%, ghostWhite 50%, #DCD7C8 100%);
+                /* firefox */
+                filter: progid:DXImageTransform.Microsoft.gradient(        startColorstr='#F6F5F2',
+                    endColorstr='#DCD7C8', GradientType=0 ); /* ie */
+                background: -o-linear-gradient(left, #F6F5F2 0%, ghostWhite 50%, #F6F5F2 100%);
+                background: -webkit-gradient(linear, left top, right top, color-stop(0%, #DCD7C8),
+                    color-stop(50%, ghostWhite), color-stop(100%, #DCD7C8) ); /* webkit */
+                /* opera *
+                                        
+                                        /*background-color: #BBBB90;*/ //
+                left: 0px; //
+                top: 0px; //
+                height: 120px; //
+                height: 60px; //
+                width: 5%;
+                overflow: hidden; //
+                border-left-style: solid; //
+                /*border-left-width: 1px;*/ //
+                border-left-color: #D3C9BC; //
+                margin-left: -4px; //
+                float: right;
+                height: 100%;
+                position: relative;
+                border-left: 1px solid #DCD7C8;
+                border-right: 1px solid #DCD7C8;
+            }
+
+            div.toolbar_group {
+                //background: violet;
+                position: relative;
+                top: 0px;
+                height: auto;
+                width: auto;
+            }
+
+            div.toolbar_group_label {
+                position: absolute; //
+                top: 80%;
+                top: 70%;
+                bottom: 0%;
+                width: 100%;
+                text-align: center; //
+                font-size: 14px;
+                height: 16px;
+                font-height: 16px;
+                font-size: 11px;
+            }
+
+            div.toolbar_group_divider { //
+                                        top: 0px; //
+                                        width: 2px; //
+                                        width: 1px;
+                                        height: 1px;
+                                        background-color: #D3C9BC; //
+                                        float: left; //
+                                        margin-left: 3px; //
+                                        margin-right: 3px;
+            }
+
+            div.toolbar_button { //
+                                 margin-top: 2px; //
+                                 margin-right: 2px; //
+                                 margin-left: 2px;
+                                 margin-top: 1px;
+                                 margin-right: 1px;
+                                 margin-left: 1px;
+                                 position: relative;
+                                 margin-top: 8px;
+                                 margin-bottom: 8px; //
+                                 float: left;
+                                 //background: yellow;
+            }
+
+            div.toolbar_button_overlay {
+                position: absolute;
+                top: -1px;
+                left: -1px;
+                height: 100%;
+                width: 100%;
+                float: left;
+                height: 40px;
+                margin-top: -5px;
+            }
+
+            div.toolbar_button_selected {
+                border-style: inset;
+                border-width: 1px;
+                border-radius: 2px;
+                border-color: #CE8D42;
+                background-color: rgba(206, 141, 66, 0.4);
+                height: 40px;
+                margin-top: -5px;
+            }
+
+            div.toolbar_button_enabled:hover {
+              /*  border-style: outset;
+                border-width: 1px;*/
+                border-radius: 2px;
+                border-color: #D3C9BC;
+                background-color: rgba(125, 125, 255, 0.2);
+            }
+
+            div.toolbar_button_disabled {
+                border-style: inset;
+                border-width: 1px;
+                border-radius: 2px;
+                border-color: #BBB;
+                background-color: rgba(96, 96, 96, 0.2);
+            }
+
+            div.toolbar_button_touched {
+                /*border-style: inset;
+                border-width: 1px;*/
+                border-radius: 2px;
+                border-color: #BBB;
+                background-color: rgba(255, 255, 0, 0.2);
+            }
+
+            div.toolbar_button_icon { //
+                                      width: 64px; //
+                                      height: 64px;
+                                      width: 20px;
+                                      height: 20px;
+                                      background-color: #111;
+                                      margin: 5px auto;
+            }
+
+            div.toolbar_button_label { //
+                                       margin-bottom: 5px;
+                                       margin-bottom: 1px;
+                                       margin-top: -4px;
+                                       width: 100%;
+                                       text-align: center; //
+                                       font-size: 12px;
+                                       font-size: 10px;
+            }
+
+            li.toolbar_button:hover {
+                background-color: #AAAA90;
+            }
+
+            input.image_upload {
+                top: 0;
+                right: 0;
+                font-size: 10em;
+                width: 100%;
+                height: 100%;
+                opacity: 0.5;
+            }
+
+            div#bounding_box {
+                position: absolute;//
+                outline: #303030 dashed 1px;
+                border: 1px dashed #333;
+                background-color: GhostWhite;
+            }
+            .drop-hover{
+                opacity: 0.5;
+            }
+div#recyclebinexer {
+    position: absolute;
+    background-image: url(../images/recyclebin.png);
+    width: 75px;
+    height: 75px;
+    background-repeat: no-repeat;
+    background-size: 75px;
+    visibility: hidden;,
+z-index:10;
+    box-sizing: border-box;
+}
+.dropregion{
+    position: absolute;
+    background-image: url(../images/recyclebin.png);
+    width: 75px;
+    height: 75px;
+    background-repeat: no-repeat;
+    background-size: 75px;
+    visibility: hidden;,
+z-index:10;
+    box-sizing: border-box;
+}
+            div#recyclebin {
+                position: absolute;
+                //border: none;
+                background-image: url("../images/recyclebin.png");
+                width: 75px;
+                height: 75px;
+                background-repeat: no-repeat;
+                background-size: 75px;
+                //z-index: 30;
+                visibility: hidden;
+            }
+            
+            div#loader {
+                position: absolute;
+                //border: none;
+                background-image: url("../images/loader.gif");
+                width: 75px;
+                height: 75px;
+                background-repeat: no-repeat;
+                background-size: 75px;
+                //z-index: 30;
+                visibility: hidden;
+            }
+            
+            div#panelkey {
+                position: absolute;
+                border-top: 1px solid #888888;
+                border-bottom: 1px solid #CAFF70;
+                background-color: #BBBBBB;
+                top: 96%;
+                width: 100%;
+                height: 4%; //
+                visibility: visible;
+                font-size: 10px;
+                display: none;
+            }
+
+            div#segment_drag {
+                position: absolute; //
+                outline: #303030 dashed 1px; //
+                border: 1px dashed #333;
+                background-color: none;
+                text-align: center;
+                width: 15px;
+                height: 15px;
+                z-index: 150;
+                visibility: hidden;
+            }
+
+            div#bounding_sub1,div#bounding_sub2,div#box {
+                position: absolute; //
+                outline: #303030 dashed 1px;
+                border: 1px dashed #333;
+                background-color: GhostWhite;
+            }
+
+            div#magnify_box {
+                position: absolute;
+                z-index: 20;
+                overflow: hidden;
+                display: none;
+                -moz-transform-origin: center center;
+                -webkit-transform-origin: center center;
+            }
+            
+            div.segmentSplit {
+                position: absolute; //
+                outline: #303030 dashed 1px; //
+                border: 1px dashed #333; //
+                background-color: GhostWhite;
+            }
+
+            div.bb_handle {
+                visibility: inherit;
+                position: absolute;
+                width: 60px;
+                height: 60px;
+                border: 2px solid blue;
+                border-radius: 30px;
+                background-color: GhostWhite;
+                opacity: 0.5;
+                z-index: 10;
+            }
+
+            div.bb_draft {
+                background-color: #FF8800;
+                border: 2px solid #444444;
+                border-radius: 20px 20px 20px 20px;
+                height: 20px;
+                position: absolute;
+                visibility: inherit;
+                width: 20px;
+            }
+
+            div.segment_set {
+                position: absolute; //
+                background-color: rgba(255, 128, 0, 0.5);
+                background-color: "pink";
+                z-index: 5;
+                text-align: center;
+                color: rgba(0, 128, 196, 1);
+                font-family: "Times New Roman", Georgia, Serif; //
+                border: 1px dashed #333333;
+                border: 1px solid green;
+            }
+
+            div#selection_rectangle,div#select_rec {
+                position: absolute;
+                border: 1.75px solid #44F;
+                z-index: 100;
+            }
+
+            div#touchhold {
+                position: absolute;
+                border: 2px solid #4444FF;
+                border-radius: 50px;
+                z-index: 100;
+                visibility: hidden;
+                width: 100px;
+                height: 100px;
+                text-align: center;
+                font-size: 20px;
+                color: #4444FF;
+            }
+            div#selection_sub {
+                position: absolute;
+                border: 2px solid red;
+                z-index: 100;
+                visibility: hidden;
+            }
+
+            svg.pen_stroke {
+                position: absolute;
+                z-index: 15;
+            }
+
+            div#infobar-wrapper,div#log,div#exprHistory,div#recExpr {
+                height: 25px;
+                //line-height: 25px;
+                font-size: 11px;
+                background-color: #d3d3d3;
+                color: #333; //
+                border-bottom: 1px solid #888; //
+                border-top: 1px solid #888;
+                //padding-left: 5px;
+                //padding-right: 5px;
+            }
+
+            div#infowrapper,div#exprHistory {
+                height: 25px;
+                float: left;
+                width: 50%;
+                border-right: 1px solid #d3d3d3;
+            }
+
+            div #texwrapper,div#recExpr {
+                height: 25px;
+                //margin-left: 50%;
+                //padding-left: 10px;
+            }
+
+            div#history .myapp-delete {
+                float: right;
+                -webkit-border-radius: 25px;
+                -moz-border-radius: 25px;
+                -o-border-radius: 25px;
+                border-radius: 25px; //
+                background: -moz-linear-gradient(center top, #940003, ghostWhite, #940003)
+                    repeat scroll 0 0 transparent; //
+                background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #940003),
+                    color-stop(50%, ghostWhite), color-stop(100%, #940003) ); /* webkit */
+                background: #940003;
+                border: 1px solid white; //
+                margin-top: -35px;
+                border-width: 0px;
+                height: 25px;
+                width: 25px;
+                margin-right: 5px;
+                font-size: 16px;
+                text-align: center;
+                color: white;
+                line-height: 1.25;
+            }
+
+            div#history .myapp-hidden {
+                visibility: hidden;
+            }
+
+            div#resize-to {
+                background: -moz-linear-gradient(center top, #6D84B4 0%, ghostWhite 50%, #6D84B4
+                    100%);
+                background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #6D84B4),
+                    color-stop(50%, ghostWhite), color-stop(100%, #6D84B4) ); /* webkit */
+            }
+
+            .swipeR {
+                border-bottom: 1px solid yellow;
+                -webkit-border-radius: 5px;
+                -moz-border-radius: 5px;
+                -o-border-radius: 5px;
+                border-radius: 5px; //
+                background: -moz-linear-gradient(center top, windowframe, ghostWhite, windowframe)
+                    repeat scroll 0 0 transparent; //
+                background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,
+                    windowframe), color-stop(50%, ghostWhite),
+                    color-stop(100%, windowframe) ); /* webkit */
+            }
+
+            .rformula {
+                border-radius: 15px 15px 15px 15px;
+                float: right;
+                width: 15px;
+                height: 15px;
+            }
+            /**
+             *
+             * Vertical Scrollbar
+             *
+            */
+            .myScrollbarV {
+                position: absolute;
+                z-index: 100;
+                width: 2.5px;
+                bottom: 7px;
+                top: 2px;
+                right: 1px
+            }
+
+            .myScrollbarV>div {
+                position: absolute;
+                z-index: 100;
+                width: 100%;
+                /* The following is probably what you want to customize */
+                background: -webkit-gradient(linear, 0 0, 100% 0, from(#f00), to(#900) );
+                background-image: -moz-linear-gradient(top, #f00, #900);
+                background-image: -o-linear-gradient(top, #f00, #900);
+                border: 1px solid #900;
+                -webkit-background-clip: padding-box;
+                -moz-background-clip: padding-box;
+                -o-background-clip: padding-box;
+                background-clip: padding-box;
+                -webkit-box-sizing: border-box;
+                -moz-box-sizing: border-box;
+                -o-box-sizing: border-box;
+                box-sizing: border-box;
+                -webkit-border-radius: 4px;
+                -moz-border-radius: 4px;
+                -o-border-radius: 4px;
+                border-radius: 4px;
+                -webkit-box-shadow: inset 1px 1px 0 rgba(255, 255, 255, 0.5);
+                -moz-box-shadow: inset 1px 1px 0 rgba(255, 255, 255, 0.5);
+                -o-box-shadow: inset 1px 1px 0 rgba(255, 255, 255, 0.5);
+                box-shadow: inset 1px 1px 0 rgba(255, 255, 255, 0.5);
+            }
+
+            #exer {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                text-align: right;
+                line-height: 0;
+                z-index: 5;
+                /** background color **/
+                background: #DCD7C8; /* old browsers */
+                background: -moz-linear-gradient(left, ghostWhite 0%, #DCD7C8 100%, #DCD7C8 100%);
+                /* firefox */
+                background: -webkit-gradient(linear, left top, right top, color-stop(0%, ghostWhite),
+                    color-stop(100%, #DCD7C8), color-stop(100%, #DCD7C8) ); /* webkit */
+                filter: progid:DXImageTransform.Microsoft.gradient(        startColorstr='ghostWhite',
+                    endColorstr='#DCD7C8', GradientType=0 ); /* ie */
+                background: -o-linear-gradient(left, ghostWhite 0%, #DCD7C8 100%, #F6F5F2 100%);
+                /* opera */
+                box-shadow: 3px 3px 3px #333;
+                -moz-box-shadow: 3px 3px 3px #333;
+                -webkit-box-shadow: 3px 3px 3px #333;
+            }
+
+            .label {
+                font-family: Verdana, Arial, Helvetica, sans-serif;
+                font-size: 11px;
+                color: #0066FF;
+            }
+
+            .tableBorder {
+                border: solid 1px #0066FF;
+                visibility: hidden;
+            }
+
+            .message {
+                font-family: Verdana, Arial, Helvetica, sans-serif;
+                font-size: 14px;
+                font-weight: bold;
+                color: #0066FF;
+            }
+            div#btn-resize{
+                position: absolute;
+                z-index: 100;
+                height: 25px;
+                //top: 37%;
+                //left: 47.5%;
+                width: 50px;
+                background: white;
+                background-image: url("../images/grabber.png");
+                background-repeat: no-repeat;
+                background-size: 100% 100%;
+                //background-position: 6.5px 4px;
+                -webkit-border-radius: 5px;
+                -moz-border-radius: 5px;
+                border-radius: 5px;
+                //box-shadow: 0 0 10px #000000 inset;
+                //-webkit-box-shadow: 0 0 10px #000000 inset;
+                //-webkit-box-shadow: 0 0 10px #000000 inset;
+            }
+
+            .MathJax_Display{
+                margin-bottom:0 !important;
+                margin-top: 0!important;
+                float:right !important;
+               /* width: 300px !important;*/
+            }
+/* mau cho open exercise */
+.ui-listview .ui-btn-down-f {
+    background: none repeat scroll 0 0 #BBBBBB;
+}
+
+.ui-btn-down-f {
+    background: none repeat scroll 0 0 #BBBBBB;
+}
+/* chinh popup background thanh mau trang */
+.ui-popup {
+    background: #FFFFFF;
+    box-shadow: none;
+}

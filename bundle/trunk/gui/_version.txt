@@ -1,0 +1,12 @@
+
+
+v0.51 (unofficial tag)
+1. hide password while typing. summer 2014
+
+v0.5 (March 2014)
+1. organize exercise w/ sharing folders with user & groups
+2. reorganized directories into "ours" & "theirs" code, softlinking index.jsp
+
+This is the May 2013 version:
+-- the newest feature is Authoring.
+-- it comes before Instructions & MathJax features

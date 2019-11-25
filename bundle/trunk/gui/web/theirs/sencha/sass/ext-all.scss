@@ -1,0 +1,10 @@
+@import 'compass';
+$frame-base-color:red;
+$frame-font-size:24px;
+@import 'ext4/default/all';
+@include extjs-button;
+@include extjs-form;
+@include extjs-panel;
+@include extjs-qtip;
+@include extjs-toolbar;
+@include extjs-window;
